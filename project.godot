@@ -11,8 +11,36 @@ config_version=5
 [application]
 
 config/name="TimeTravelBananaJameGam"
+run/main_scene="uid://c4ecfyprkicdg"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*uid://cg7w1gtpmi1rt"
+GlobalSignals="*uid://bvrfcn21eb1i7"
+References="*uid://cg77e2ggql58v"
+SceneManager="*uid://j20v4cg7v8m1"
+
+[debug]
+
+gdscript/warnings/unused_variable=0
+gdscript/warnings/unused_local_constant=0
+gdscript/warnings/unused_private_class_variable=0
+gdscript/warnings/unused_parameter=0
+gdscript/warnings/unused_signal=0
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=4
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
 
 [physics]
 

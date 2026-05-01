@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://c4ecfyprkicdg"]
+
+[ext_resource type="Script" uid="uid://cqajv1pu3i67b" path="res://Screens/TitleScreen/title_screen.gd" id="1_des2l"]
+
+[node name="TitleScreen" type="Control" unique_id=1965383338]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_des2l")
+
+[node name="title_text" type="Label" parent="." unique_id=1856567381]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.5
+offset_right = 76.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Time Travel Banana"
+
+[node name="buttons" type="VBoxContainer" parent="." unique_id=1834584578]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -33.0
+offset_right = 21.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="play" type="Button" parent="buttons" unique_id=1259928141]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Play"
+
+[node name="quit" type="Button" parent="buttons" unique_id=1225323952]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=590232651]
