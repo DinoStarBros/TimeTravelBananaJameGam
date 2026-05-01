@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cqajv1pu3i67b" path="res://Screens/TitleScreen/title_screen.gd" id="1_des2l"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_des2l"]
+font_size = 72
+outline_size = 35
+outline_color = Color(0, 0, 0, 1)
+
 [node name="TitleScreen" type="Control" unique_id=1965383338]
 layout_mode = 3
 anchors_preset = 15
@@ -16,11 +21,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -76.5
-offset_right = 76.5
-offset_bottom = 23.0
+offset_left = -302.0
+offset_right = 302.0
+offset_bottom = 17.0
 grow_horizontal = 2
 text = "Time Travel Banana"
+label_settings = SubResource("LabelSettings_des2l")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="buttons" type="VBoxContainer" parent="." unique_id=1834584578]
 layout_mode = 1
@@ -29,21 +37,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -21.0
-offset_top = -33.0
-offset_right = 21.0
-offset_bottom = 33.0
+offset_left = -92.0
+offset_top = -86.5
+offset_right = 92.0
+offset_bottom = 86.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 55
 
 [node name="play" type="Button" parent="buttons" unique_id=1259928141]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 50
 text = "Play"
 
 [node name="quit" type="Button" parent="buttons" unique_id=1225323952]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 50
 text = "Quit"
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=590232651]
