@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bt5om726jb4ul"]
+
+[ext_resource type="Script" uid="uid://c11c4vpijm0lj" path="res://Globals/MusicManager/music_manager.gd" id="1_fjkhl"]
+
+[node name="MusicManager" type="Node" unique_id=1224638921]
+process_mode = 3
+script = ExtResource("1_fjkhl")
