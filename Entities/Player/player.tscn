@@ -88,10 +88,10 @@ tracks/1/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.07),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.01, 0.07),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nhbkt"]
@@ -109,6 +109,10 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avsg8"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_og23y"]
+_data = PackedByteArray("AAADAAUAAAABAAAAgAAAAIAAAAD2AAAAUklGRu4AAABXRUJQVlA4TOEAAAAvf8AfEA8w//M///Mf8IBbW3vb5v3GOVYWXKoyVmDpDI2iMZyJ0TAKRkDpgENV/NCriuj/BHDJeuxKXbiu665t16Fr6Cp91pNdT1poNxC0AV60E3xqBX60bFTTHGUhpQXZC0eSJwUhQ4SoGCNMQnJM0ExYMBnNzRFojp+FEGkLqhe++fGUKEz8BPIoNKsj6SxM/EQYhW9agChE2oLk55JncuSFsOBsFDeXHSNUmyuWIrwyX8kBnoSB7OFWOFAceAGKkZ1UoZh0BxX5AK/aFp60K9hrDhaakZwG2XpO9A5dl8kA")
+size_override = Vector2(128, 128)
 
 [node name="Player" type="CharacterBody2D" unique_id=1435043277]
 script = ExtResource("1_mv1ah")
@@ -308,3 +312,32 @@ script = ExtResource("25_ui1ln")
 
 [node name="Pause" type="CanvasLayer" parent="." unique_id=905008884]
 script = ExtResource("26_og23y")
+
+[node name="arrow" type="Sprite2D" parent="." unique_id=740876187]
+unique_name_in_owner = true
+z_index = 5
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_og23y")
+offset = Vector2(25, 0)
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Art/BananTime/arrows.aseprite",
+"source_uid": 8433940340145152951
+}
+metadata/_aseprite_wizard_source_file_hash_ = "4a145c0fd2a44e6cf330b3986623982f"

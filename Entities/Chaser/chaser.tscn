@@ -52,7 +52,6 @@ shape = SubResource("RectangleShape2D_45tkn")
 debug_color = Color(0.99215686, 0, 0.27450982, 0)
 
 [node name="HealthComponent" parent="." unique_id=1186497212 node_paths=PackedStringArray("corpse_spawner") instance=ExtResource("8_1arn3")]
-max_hp = null
 corpse_spawner = NodePath("../CorpseSpawner")
 
 [node name="CorpseSpawner" parent="." unique_id=1342225878 instance=ExtResource("5_8orw2")]

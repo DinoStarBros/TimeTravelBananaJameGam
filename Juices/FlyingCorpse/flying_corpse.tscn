@@ -1,14 +1,89 @@
 [gd_scene format=3 uid="uid://b5d3ffpf0yo25"]
 
 [ext_resource type="Script" uid="uid://bvpfbha2rppse" path="res://Juices/FlyingCorpse/flying_corpse.gd" id="1_0783s"]
+[ext_resource type="Shader" uid="uid://cne6u584nd6e4" path="res://shaders/hitFlash.gdshader" id="2_8afjc"]
 [ext_resource type="Texture2D" uid="uid://bn200tim80d5i" path="res://Art/Placeholder/Eneme.png" id="2_mdnuj"]
+[ext_resource type="AudioStream" uid="uid://btoc7gcwarymr" path="res://Audio/amalgun/shoot.wav" id="3_f0a3t"]
+[ext_resource type="AudioStream" uid="uid://blcay1tfimw0e" path="res://Audio/cardtowersfx/player_hit.wav" id="4_vigy8"]
+[ext_resource type="AudioStream" uid="uid://cw0s6bkxlwn2b" path="res://Audio/splashtownSFX/Jump.wav" id="5_vigy8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o2fbd"]
+shader = ExtResource("2_8afjc")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/mix_value = 0.0
+shader_parameter/opacity = 1.0
+
+[sub_resource type="Animation" id="Animation_o2fbd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Eneme:material:shader_parameter/mix_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_8afjc"]
+resource_name = "start"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Eneme:material:shader_parameter/mix_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o2fbd"]
+_data = {
+&"RESET": SubResource("Animation_o2fbd"),
+&"start": SubResource("Animation_8afjc")
+}
 
 [node name="FlyingCorpse" type="Node2D" unique_id=1391116088]
 script = ExtResource("1_0783s")
 
 [node name="Eneme" type="Sprite2D" parent="." unique_id=473489711]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_o2fbd")
 scale = Vector2(2.6, 2.6)
 texture = ExtResource("2_mdnuj")
 region_enabled = true
 region_rect = Rect2(0, 0, 24, 24)
+
+[node name="death" type="AudioStreamPlayer2D" parent="." unique_id=1706765692]
+unique_name_in_owner = true
+stream = ExtResource("3_f0a3t")
+pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="death2" type="AudioStreamPlayer2D" parent="." unique_id=901311434]
+unique_name_in_owner = true
+stream = ExtResource("4_vigy8")
+bus = &"SFX"
+
+[node name="death3" type="AudioStreamPlayer2D" parent="." unique_id=1990854753]
+unique_name_in_owner = true
+stream = ExtResource("5_vigy8")
+bus = &"SFX"
+
+[node name="Timer" type="Timer" parent="." unique_id=1752264774]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1116151797]
+libraries/ = SubResource("AnimationLibrary_o2fbd")
+autoplay = &"start"

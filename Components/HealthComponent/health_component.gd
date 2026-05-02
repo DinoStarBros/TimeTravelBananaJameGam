@@ -16,6 +16,7 @@ func took_damage(attack : Attack) -> void:
 	
 	if hp <= 0:
 		if get_parent() is Enemy:
+			Global.camera.screen_shake(10, 0.1)
 			get_parent().queue_free()
 			if corpse_spawner:
 				corpse_spawner.dead(attack)

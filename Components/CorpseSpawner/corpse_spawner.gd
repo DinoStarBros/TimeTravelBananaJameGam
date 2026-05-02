@@ -8,7 +8,7 @@ var dir_to_atk : Vector2
 const flying_corpse_scn : PackedScene = preload("res://Juices/FlyingCorpse/flying_corpse.tscn")
 
 func dead(attack: Attack) -> void:
-	dir_to_atk = global_position.direction_to(attack.attack_pos)
+	dir_to_atk = -global_position.direction_to(get_global_mouse_position())
 	_spawn_flying_corpse()
 
 func _spawn_flying_corpse() -> void:

@@ -16,6 +16,7 @@ class_name Player
 @onready var banana_sprite: Sprite2D = %banana
 @onready var slash_sprite: Sprite2D = %slash_sprite
 @onready var rang_charge_bar: ProgressBar = %rang_charge_bar
+@onready var arrow: Sprite2D = %arrow
 
 var x_input : int = 0
 var last_x_input : int = 1
@@ -72,6 +73,8 @@ func _physics_process(delta: float) -> void:
 	_banana_rot_handle(delta)
 	
 	banana_pivot.visible = has_banana
+	arrow.look_at(get_global_mouse_position())
+	
 
 func x_move_handling(speed_mult : float = 1.0) -> void:
 	velocity.x = x_input * x_speed * speed_mult
