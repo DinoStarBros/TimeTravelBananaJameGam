@@ -7,7 +7,7 @@ func enter() -> void:
 	p.override_flip_sprite = true
 	state_duration = p.dash_duration
 
-func update(delta: float) -> void:
+func physics_update(delta: float) -> void:
 	state_duration = max(state_duration - delta, 0)
 	p.velocity.y = 0
 	if state_duration <= 0:

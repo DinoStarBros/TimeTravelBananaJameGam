@@ -5,6 +5,8 @@ class_name Player
 @export var jump_speed : float = 600
 @export var dash_speed : float = 1200
 @export var slash_speed : float = 350
+@export var boomerang_throw_recoil : float = 500
+@export var bananarang_speed : float = 1000
 
 @onready var sprite: Sprite2D = %Mow
 @onready var state_machine: StateMachine = %StateMachine
@@ -27,7 +29,9 @@ var time_since_slash : float = 0
 var slash_mode : bool = false
 var banan_desire_rot : float
 var rang_charge : float = 0
+var has_banana : float = true
 
+const boomerang_throw_duration : float = 0.2
 const dash_duration : float = 0.17
 const dash_cooldown : float = 0.33
 const slash_duration : float = 0.2
@@ -65,6 +69,8 @@ func _physics_process(delta: float) -> void:
 	rang_charge_bar.value = rang_charge
 	
 	_banana_rot_handle(delta)
+	
+	banana_pivot.visible = has_banana
 
 func x_move_handling(speed_mult : float = 1.0) -> void:
 	velocity.x = x_input * x_speed * speed_mult
@@ -84,6 +90,8 @@ func banana_pivot_handling() -> void:
 	banana_pivot.look_at(get_global_mouse_position())
 
 func slash_attack_handling() -> void:
+	if !has_banana: return
+	
 	if Input.is_action_just_pressed("left_click") and time_since_slash >= slash_cooldown:
 		state_machine.change_state("slashattack")
 		
@@ -99,6 +107,8 @@ func slash_attack_handling() -> void:
 		slash_sprite.flip_v = !slash_mode
 
 func boomerang_handle(delta: float) -> void:
+	if !has_banana: return
+	
 	if Input.is_action_pressed("right_click"):
 		state_machine.change_state("boomerangcharge")
 

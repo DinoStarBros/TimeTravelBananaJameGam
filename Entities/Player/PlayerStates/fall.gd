@@ -4,7 +4,7 @@ func enter() -> void:
 	p.reset_sprite_flip_gravity()
 	p.jump_buffer_time = 0
 
-func update(delta: float) -> void:
+func physics_update(delta: float) -> void:
 	p.x_move_handling()
 	if p.is_on_floor():
 		state_machine.change_state("walkdle")

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://botycuaem00iv"]
+
+[ext_resource type="Script" uid="uid://pga4qg5bgkcx" path="res://Projectiles/BananaRang/banana_rang.gd" id="1_s7myl"]
+[ext_resource type="AudioStream" uid="uid://cd0ouhgvmyarl" path="res://Audio/BananTime/floraphonic-spin-whoosh-1-186596.mp3" id="2_adr3m"]
+[ext_resource type="Texture2D" uid="uid://diihmdabfwa8g" path="res://Art/Placeholder/Trail2.png" id="3_ghrhl"]
+
+[node name="BananaRang" type="Node2D" unique_id=892829957]
+script = ExtResource("1_s7myl")
+
+[node name="spin" type="AudioStreamPlayer2D" parent="." unique_id=1166449180]
+unique_name_in_owner = true
+stream = ExtResource("2_adr3m")
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="banana" type="Sprite2D" parent="." unique_id=1391774164]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_ghrhl")
+offset = Vector2(45.09, 0)
+flip_h = true
+hframes = 2
+vframes = 2

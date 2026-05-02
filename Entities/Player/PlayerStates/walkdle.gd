@@ -3,7 +3,7 @@ extends State
 func enter() -> void:
 	p.reset_sprite_flip_gravity()
 
-func update(delta: float) -> void:
+func physics_update(delta: float) -> void:
 	p.x_move_handling()
 	
 	if Input.is_action_just_pressed("jump") and p.is_on_floor():

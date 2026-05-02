@@ -1,4 +1,5 @@
 extends Node2D
+class_name Arena
 
 @onready var camera: Camera = %Camera
 
@@ -7,6 +8,7 @@ var screen_half : Vector2
 
 func _ready() -> void:
 	screen_half = get_viewport_rect().size / 2
+	Global.arena = self
 
 func _process(delta: float) -> void:
 	

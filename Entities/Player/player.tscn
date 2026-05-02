@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://cw0s6bkxlwn2b" path="res://Audio/splashtownSFX/Jump.wav" id="18_pjcup"]
 [ext_resource type="AudioStream" uid="uid://dynnvvkqumtas" path="res://Audio/BananTime/smacked.wav" id="20_ppdlg"]
 [ext_resource type="AudioStream" uid="uid://b625mnpt1ym4x" path="res://Audio/BananTime/unlockHold1.mp3" id="22_a8wow"]
+[ext_resource type="AudioStream" uid="uid://cryj6702ttly6" path="res://Audio/jetslash sfx/chargeslash.wav" id="23_avsg8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lu8i8"]
 size = Vector2(30, 64)
@@ -263,6 +264,12 @@ stream = ExtResource("22_a8wow")
 pitch_scale = 1.5
 bus = &"SFX"
 
+[node name="rang_throw" type="AudioStreamPlayer" parent="SFX" unique_id=1974133517]
+unique_name_in_owner = true
+stream = ExtResource("23_avsg8")
+pitch_scale = 1.5
+bus = &"SFX"
+
 [node name="rang_charge_bar" type="ProgressBar" parent="." unique_id=1810886969]
 unique_name_in_owner = true
 offset_left = -46.0
@@ -272,3 +279,6 @@ offset_bottom = -58.160004
 theme_override_styles/background = SubResource("StyleBoxFlat_a8wow")
 theme_override_styles/fill = SubResource("StyleBoxFlat_avsg8")
 show_percentage = false
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=288530981]
+current = true

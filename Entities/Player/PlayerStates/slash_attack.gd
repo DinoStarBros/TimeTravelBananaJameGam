@@ -5,7 +5,7 @@ func enter() -> void:
 	state_duration = p.slash_duration
 	p.velocity = p.dir_to_mouse * p.slash_speed
 
-func update(delta: float) -> void:
+func physics_update(delta: float) -> void:
 	state_duration = max(state_duration - delta, 0)
 	if state_duration <= 0:
 		state_machine.change_state("walkdle")
