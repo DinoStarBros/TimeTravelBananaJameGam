@@ -1,10 +1,11 @@
 extends Node
 class_name State
 
-@onready var p : CharacterBody2D = owner
+@onready var p : Player = owner
 
 var state_machine : StateMachine
 var frames : int = 0
+var state_duration : float = 0
 
 func enter() -> void:
 	pass

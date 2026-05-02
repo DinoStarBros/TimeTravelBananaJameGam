@@ -1,11 +1,14 @@
 extends Node2D
 
+@onready var camera: Camera = %Camera
 
-# Called when the node enters the scene tree for the first time.
+var cam_desire_pos : Vector2
+var screen_half : Vector2
+
 func _ready() -> void:
-	pass # Replace with function body.
+	screen_half = get_viewport_rect().size / 2
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	
+	cam_desire_pos = (Global.player.global_position + screen_half + Vector2(0, -300)) / 2
+	camera.global_position.x = lerp(camera.global_position.x, cam_desire_pos.x, 15.0 * delta)

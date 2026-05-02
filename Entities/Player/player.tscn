@@ -1,31 +1,39 @@
 [gd_scene format=3 uid="uid://ccpt3ulk0uvgf"]
 
 [ext_resource type="Script" uid="uid://ddfgra12fia2h" path="res://Entities/Player/player.gd" id="1_mv1ah"]
-[ext_resource type="Script" uid="uid://dt7cm1xlfpp7q" path="res://Entities/Player/camera.gd" id="2_3uyv8"]
-[ext_resource type="Texture2D" uid="uid://cnjyclcu2sh8l" path="res://icon.svg" id="3_lu8i8"]
+[ext_resource type="Texture2D" uid="uid://dvamsylqvvrlj" path="res://Art/Stuff/Mow.png" id="2_iplt1"]
 [ext_resource type="Script" uid="uid://cq31qgpvffhy8" path="res://StateMachineStuff/state_machine.gd" id="4_tekja"]
 [ext_resource type="Script" uid="uid://xlg5v4daw5s0" path="res://Entities/Player/PlayerStates/walkdle.gd" id="5_5c2io"]
 [ext_resource type="Script" uid="uid://b47lb8p18ml02" path="res://Entities/Player/PlayerStates/boomerang_charge.gd" id="6_4wf4l"]
 [ext_resource type="Script" uid="uid://d2x3yayfxcxqk" path="res://Entities/Player/PlayerStates/boomerang_throw.gd" id="7_01a4e"]
+[ext_resource type="Script" uid="uid://bb4d2ctgmmvdu" path="res://Entities/Player/PlayerStates/fall.gd" id="7_ap3xn"]
 [ext_resource type="Script" uid="uid://d4clgcc4hjp0c" path="res://Entities/Player/PlayerStates/attack.gd" id="8_lub02"]
 [ext_resource type="Script" uid="uid://tim43anrvaa7" path="res://Entities/Player/PlayerStates/jump.gd" id="9_x1y6q"]
+[ext_resource type="Script" uid="uid://m2ussrvc3xoh" path="res://Entities/Player/PlayerStates/dash.gd" id="10_ap3xn"]
 [ext_resource type="Script" uid="uid://u4eh8slvi04s" path="res://Entities/Player/PlayerStates/rewind.gd" id="10_x1y6q"]
+[ext_resource type="Script" uid="uid://c3orbbt247umu" path="res://Entities/Player/PlayerStates/dead.gd" id="12_iplt1"]
+[ext_resource type="PackedScene" uid="uid://cg1j2ioabubjc" path="res://Juices/trail/trail_fx.tscn" id="13_owvpp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lu8i8"]
-size = Vector2(50, 84)
+size = Vector2(30, 64)
 
 [node name="Player" type="CharacterBody2D" unique_id=1435043277]
 script = ExtResource("1_mv1ah")
 
-[node name="Camera" type="Camera2D" parent="." unique_id=315308836]
-script = ExtResource("2_3uyv8")
-
 [node name="environmentCollision" type="CollisionShape2D" parent="." unique_id=403276698]
 shape = SubResource("RectangleShape2D_lu8i8")
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=913155926]
-scale = Vector2(0.4, 0.65624994)
-texture = ExtResource("3_lu8i8")
+[node name="Mow" type="Sprite2D" parent="." unique_id=24386391]
+unique_name_in_owner = true
+z_index = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_iplt1")
+hframes = 8
+vframes = 5
+
+[node name="trail_fx" parent="Mow" unique_id=1458130706 instance=ExtResource("13_owvpp")]
+show_behind_parent = true
+MAX_LENGTH = 10.0
 
 [node name="Label" type="Label" parent="." unique_id=263212395]
 offset_left = -16.0
@@ -35,6 +43,7 @@ offset_bottom = -78.0
 text = "bruhhh"
 
 [node name="StateMachine" type="Node" parent="." unique_id=31615284 node_paths=PackedStringArray("initial_state", "debug")]
+unique_name_in_owner = true
 script = ExtResource("4_tekja")
 initial_state = NodePath("Walkdle")
 debug = NodePath("../Label")
@@ -42,19 +51,30 @@ debug = NodePath("../Label")
 [node name="Walkdle" type="Node" parent="StateMachine" unique_id=1249321070]
 script = ExtResource("5_5c2io")
 
+[node name="Jump" type="Node" parent="StateMachine" unique_id=1848235840]
+script = ExtResource("9_x1y6q")
+
+[node name="Fall" type="Node" parent="StateMachine" unique_id=1150437295]
+script = ExtResource("7_ap3xn")
+
+[node name="Dash" type="Node" parent="StateMachine" unique_id=944688220]
+script = ExtResource("10_ap3xn")
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=380533750]
+script = ExtResource("8_lub02")
+
 [node name="BoomerangCharge" type="Node" parent="StateMachine" unique_id=1519397031]
 script = ExtResource("6_4wf4l")
 
 [node name="BoomerangThrow" type="Node" parent="StateMachine" unique_id=610748440]
 script = ExtResource("7_01a4e")
 
-[node name="Attack" type="Node" parent="StateMachine" unique_id=380533750]
-script = ExtResource("8_lub02")
-
-[node name="Jump" type="Node" parent="StateMachine" unique_id=1848235840]
-script = ExtResource("9_x1y6q")
-
 [node name="Rewind" type="Node" parent="StateMachine" unique_id=2144808454]
 script = ExtResource("10_x1y6q")
 
+[node name="Dead" type="Node" parent="StateMachine" unique_id=1534403743]
+script = ExtResource("12_iplt1")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2036097099]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2139049666]
