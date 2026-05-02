@@ -4,8 +4,11 @@
 [ext_resource type="TileSet" uid="uid://bn76myqkh0j7i" path="res://placeholder_tiles.tres" id="2_bft7o"]
 [ext_resource type="PackedScene" uid="uid://ccpt3ulk0uvgf" path="res://Entities/Player/player.tscn" id="3_wey4k"]
 [ext_resource type="Script" uid="uid://dt7cm1xlfpp7q" path="res://Entities/Player/camera.gd" id="4_n7pir"]
-[ext_resource type="PackedScene" uid="uid://xwrm1hse6pjd" path="res://Scenes/ArenaHazard/arena_hazard.tscn" id="5_3lrh3"]
 [ext_resource type="PackedScene" uid="uid://c8446codes0tq" path="res://Entities/Chaser/chaser.tscn" id="6_afj85"]
+[ext_resource type="PackedScene" uid="uid://cmd1vlynxp72q" path="res://Components/HitboxComponent/hitbox_component.tscn" id="6_f8dps"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afj85"]
+size = Vector2(3358, 292.315)
 
 [node name="Arena" type="Node2D" unique_id=651972874]
 script = ExtResource("1_w8ma2")
@@ -22,9 +25,20 @@ unique_name_in_owner = true
 position = Vector2(634, 379)
 script = ExtResource("4_n7pir")
 
-[node name="ArenaHazard" parent="." unique_id=882703594 instance=ExtResource("5_3lrh3")]
-collision_layer = 0
-collision_mask = 0
-
 [node name="Chaser" parent="." unique_id=1729735331 instance=ExtResource("6_afj85")]
 position = Vector2(237, 508)
+
+[node name="HitboxComponent" parent="." unique_id=1415980216 instance=ExtResource("6_f8dps")]
+position = Vector2(640, 665.685)
+collision_mask = 4
+
+[node name="hitbarane" type="CollisionShape2D" parent="HitboxComponent" unique_id=768113637]
+position = Vector2(0, 136.15753)
+shape = SubResource("RectangleShape2D_afj85")
+
+[node name="ColorRect" type="ColorRect" parent="HitboxComponent" unique_id=1520123870]
+offset_left = -1647.0
+offset_top = -11.684998
+offset_right = 1651.0
+offset_bottom = 356.315
+color = Color(0.8392157, 0.20392157, 0, 1)
