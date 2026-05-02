@@ -42,6 +42,7 @@ const max_rang_charge : float = 0.3
 
 func _ready() -> void:
 	Global.player = self
+	Global.current_game_state = Global.game_states.COMBAT
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

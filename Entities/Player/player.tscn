@@ -537,6 +537,42 @@ process_mode = 3
 script = ExtResource("26_og23y")
 
 [node name="settingsMenu" parent="Pause" unique_id=68845947 instance=ExtResource("34_l3oqu")]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -298.0
+offset_top = -347.0
+offset_right = -298.0
+offset_bottom = -347.0
+
+[node name="buttons" type="HBoxContainer" parent="Pause/settingsMenu" unique_id=238196752]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 628.0
+offset_right = 117.0
+offset_bottom = 677.0
+
+[node name="resume" type="Button" parent="Pause/settingsMenu/buttons" unique_id=93694135]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Resume"
+
+[node name="quit" type="Button" parent="Pause/settingsMenu/buttons" unique_id=1769133055]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[node name="sure" type="Button" parent="Pause/settingsMenu/buttons" unique_id=1385522865]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Sure"
 
 [node name="arrow" type="Sprite2D" parent="." unique_id=740876187]
 unique_name_in_owner = true

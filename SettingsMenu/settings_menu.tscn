@@ -4,6 +4,9 @@
 [ext_resource type="AudioStream" uid="uid://dp3dtsiol0r0u" path="res://Audio/gunshot.wav" id="2_02yg4"]
 [ext_resource type="AudioStream" uid="uid://dlb0mt6s5iyxk" path="res://Audio/amalgun/beam.wav" id="3_276ht"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_pbt7f"]
+font_size = 40
+
 [node name="settingsMenu" type="Control" unique_id=68845947]
 process_mode = 3
 layout_mode = 3
@@ -21,6 +24,7 @@ offset_bottom = 624.0
 
 [node name="Tabs" type="TabContainer" parent="PanelContainer" unique_id=917003247]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 current_tab = 1
 
 [node name="Audio" type="VBoxContainer" parent="PanelContainer/Tabs" unique_id=1785194851]
@@ -31,6 +35,7 @@ metadata/_tab_index = 0
 [node name="txt" type="Label" parent="PanelContainer/Tabs/Audio" unique_id=282337801]
 layout_mode = 2
 text = "Master"
+label_settings = SubResource("LabelSettings_pbt7f")
 
 [node name="master_volume" type="HSlider" parent="PanelContainer/Tabs/Audio" unique_id=1842057598]
 unique_name_in_owner = true
@@ -42,6 +47,7 @@ tick_count = 11
 [node name="txt2" type="Label" parent="PanelContainer/Tabs/Audio" unique_id=1703235216]
 layout_mode = 2
 text = "Music"
+label_settings = SubResource("LabelSettings_pbt7f")
 
 [node name="music_volume" type="HSlider" parent="PanelContainer/Tabs/Audio" unique_id=1261757886]
 unique_name_in_owner = true
@@ -53,6 +59,7 @@ tick_count = 11
 [node name="txt3" type="Label" parent="PanelContainer/Tabs/Audio" unique_id=1046121095]
 layout_mode = 2
 text = "SFX"
+label_settings = SubResource("LabelSettings_pbt7f")
 
 [node name="sfx_volume" type="HSlider" parent="PanelContainer/Tabs/Audio" unique_id=300678899]
 unique_name_in_owner = true
@@ -69,10 +76,12 @@ metadata/_tab_index = 1
 [node name="txt4" type="Label" parent="PanelContainer/Tabs/Accessiblity" unique_id=390217675]
 layout_mode = 2
 text = "Screen Shake:"
+label_settings = SubResource("LabelSettings_pbt7f")
 
 [node name="screen_shake" type="Button" parent="PanelContainer/Tabs/Accessiblity" unique_id=1664901648]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "On"
 
 [node name="Panel" type="PanelContainer" parent="." unique_id=620910937]
