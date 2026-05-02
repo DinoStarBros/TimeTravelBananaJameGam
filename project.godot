@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TimeTravelBananaJameGam"
-run/main_scene="uid://c4ecfyprkicdg"
+run/main_scene="uid://bgma6xug5hb8h"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,6 +21,7 @@ Global="*uid://cg7w1gtpmi1rt"
 GlobalSignals="*uid://bvrfcn21eb1i7"
 References="*uid://cg77e2ggql58v"
 MusicManager="*uid://bt5om726jb4ul"
+SceneManager="*uid://j20v4cg7v8m1"
 
 [debug]
 
@@ -38,9 +39,19 @@ window/size/mode=4
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
+
 [gui]
 
 theme/custom_font="uid://c2mceub1ypsdr"
+
+[layer_names]
+
+2d_physics/layer_1="Environment"
+2d_physics/layer_2="Hurtboxes"
+2d_physics/layer_3="Hitboxes"
 
 [physics]
 
