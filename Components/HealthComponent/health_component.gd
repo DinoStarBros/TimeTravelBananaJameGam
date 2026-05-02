@@ -1,6 +1,8 @@
 extends Node2D
 class_name HealthComponent
 
+signal Dead
+
 @export var health_bar : ProgressBar
 @export var corpse_spawner : CorpseSpawner
 @export var max_hp : int = 1
@@ -15,11 +17,14 @@ func took_damage(attack : Attack) -> void:
 	hp -= 1
 	
 	if hp <= 0:
+		Dead.emit()
 		if get_parent() is Enemy:
 			Global.camera.screen_shake(10, 0.1)
 			get_parent().queue_free()
 			if corpse_spawner:
 				corpse_spawner.dead(attack)
+		elif get_parent() is Player:
+			get_parent().state_machine.change_state("dead")
 
 func _physics_process(delta: float) -> void:
 	if health_bar:

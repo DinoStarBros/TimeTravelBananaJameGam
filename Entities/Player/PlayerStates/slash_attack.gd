@@ -4,6 +4,7 @@ func enter() -> void:
 	p.enable_gravity = false
 	state_duration = p.slash_duration
 	p.velocity = p.dir_to_mouse * p.slash_speed
+	p.global_position.y += 1
 
 func physics_update(delta: float) -> void:
 	state_duration = max(state_duration - delta, 0)

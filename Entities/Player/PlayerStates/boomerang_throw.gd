@@ -9,6 +9,7 @@ func enter() -> void:
 	%rang_throw.play()
 	
 	_spawn_bananarang()
+	Global.camera.screen_shake(7, 0.05)
 
 func physics_update(delta: float) -> void:
 	state_duration = max(state_duration - delta, 0)

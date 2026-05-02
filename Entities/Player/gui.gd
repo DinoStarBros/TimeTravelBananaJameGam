@@ -1,1 +1,29 @@
 extends CanvasLayer
+
+@onready var screenim: AnimationPlayer = %screenim
+@onready var plr_dead: Control = %PlrDead
+@onready var health_component: HealthComponent = %HealthComponent
+
+var died : bool = false
+
+func _ready() -> void:
+	get_tree().paused = false
+	plr_dead.hide()
+	health_component.Dead.connect(_dead)
+
+func _input(event: InputEvent) -> void:
+	
+	if died:
+		if Input.is_action_just_pressed("left_click"):
+			_reload_scene()
+
+func _dead() -> void:
+	died = true
+	plr_dead.show()
+
+func _reload_scene() -> void:
+	plr_dead.hide()
+	
+	screenim.play("rewind")
+	await get_tree().create_timer(0.4).timeout
+	SceneManager.reload_scene()

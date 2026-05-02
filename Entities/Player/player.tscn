@@ -25,8 +25,14 @@
 [ext_resource type="AudioStream" uid="uid://b625mnpt1ym4x" path="res://Audio/BananTime/unlockHold1.mp3" id="22_a8wow"]
 [ext_resource type="AudioStream" uid="uid://cryj6702ttly6" path="res://Audio/jetslash sfx/chargeslash.wav" id="23_avsg8"]
 [ext_resource type="PackedScene" uid="uid://cbhff7nk3xl23" path="res://Components/HealthComponent/health_component.tscn" id="24_dv6dp"]
+[ext_resource type="AudioStream" uid="uid://ch1w4vdpx17ux" path="res://Audio/BananTime/u_zpj3vbdres-monkey-128368.mp3" id="24_u86q5"]
 [ext_resource type="Script" uid="uid://bfs780negrij7" path="res://Entities/Player/gui.gd" id="25_ui1ln"]
 [ext_resource type="Script" uid="uid://cvryjhhhtqecu" path="res://Entities/Player/pause.gd" id="26_og23y"]
+[ext_resource type="AudioStream" uid="uid://c1seb0wbvg7r3" path="res://Audio/BananTime/son_duquotidient-rembobinage-cassette-audio-391096.mp3" id="27_w51ui"]
+[ext_resource type="PackedScene" uid="uid://daemsm38ftcmj" path="res://Scenes/Plrdead/plr_dead.tscn" id="28_80ryp"]
+[ext_resource type="AudioStream" uid="uid://dogbkcuv1aiuc" path="res://Audio/crokSfx/slow-cinematic-clock-ticking-405471.mp3" id="28_slvv8"]
+[ext_resource type="Shader" uid="uid://dir4gbhde8ffd" path="res://shaders/chromaticAberration.gdshader" id="29_kx1i7"]
+[ext_resource type="Texture2D" uid="uid://cnjyclcu2sh8l" path="res://icon.svg" id="29_v27kq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_og23y"]
 size = Vector2(20, 53)
@@ -88,10 +94,10 @@ tracks/1/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.01, 0.07),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.07),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false, true]
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nhbkt"]
@@ -109,6 +115,186 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avsg8"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_slvv8"]
+shader = ExtResource("29_kx1i7")
+shader_parameter/r_displacement = Vector2(0, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(0, 0)
+
+[sub_resource type="Animation" id="Animation_w51ui"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%clock:pitch_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("chromAbber:material:shader_parameter/b_displacement")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("chromAbber:material:shader_parameter/g_displacement")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("chromAbber:material:shader_parameter/r_displacement")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kx1i7"]
+resource_name = "rewind"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("chromAbber:material:shader_parameter/r_displacement")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(10, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("chromAbber:material:shader_parameter/g_displacement")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("chromAbber:material:shader_parameter/b_displacement")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-10, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%rewind:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%clock:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%clock:pitch_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 0.09999999999999999]
+}
+
+[sub_resource type="Animation" id="Animation_slvv8"]
+resource_name = "start"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("chromAbber:material:shader_parameter/r_displacement")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("chromAbber:material:shader_parameter/g_displacement")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("chromAbber:material:shader_parameter/b_displacement")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w51ui"]
+_data = {
+&"RESET": SubResource("Animation_w51ui"),
+&"rewind": SubResource("Animation_kx1i7"),
+&"start": SubResource("Animation_slvv8")
+}
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_og23y"]
 _data = PackedByteArray("AAADAAUAAAABAAAAgAAAAIAAAAD2AAAAUklGRu4AAABXRUJQVlA4TOEAAAAvf8AfEA8w//M///Mf8IBbW3vb5v3GOVYWXKoyVmDpDI2iMZyJ0TAKRkDpgENV/NCriuj/BHDJeuxKXbiu665t16Fr6Cp91pNdT1poNxC0AV60E3xqBX60bFTTHGUhpQXZC0eSJwUhQ4SoGCNMQnJM0ExYMBnNzRFojp+FEGkLqhe++fGUKEz8BPIoNKsj6SxM/EQYhW9agChE2oLk55JncuSFsOBsFDeXHSNUmyuWIrwyX8kBnoSB7OFWOFAceAGKkZ1UoZh0BxX5AK/aFp60K9hrDhaakZwG2XpO9A5dl8kA")
@@ -128,7 +314,7 @@ shape = SubResource("RectangleShape2D_og23y")
 debug_color = Color(0.99742216, 0, 0.17616406, 0.41960785)
 
 [node name="HealthComponent" parent="." unique_id=1186497212 instance=ExtResource("24_dv6dp")]
-max_hp = 5
+unique_name_in_owner = true
 
 [node name="environmentCollision" type="CollisionShape2D" parent="." unique_id=403276698]
 shape = SubResource("RectangleShape2D_lu8i8")
@@ -188,8 +374,6 @@ script = ExtResource("10_x1y6q")
 
 [node name="Dead" type="Node" parent="StateMachine" unique_id=1534403743]
 script = ExtResource("12_iplt1")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2036097099]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2139049666]
 unique_name_in_owner = true
@@ -280,6 +464,13 @@ bus = &"SFX"
 unique_name_in_owner = true
 stream = ExtResource("20_ppdlg")
 volume_db = 10.0
+pitch_scale = 1.2
+bus = &"SFX"
+
+[node name="hurt2" type="AudioStreamPlayer" parent="SFX" unique_id=1863312705]
+unique_name_in_owner = true
+stream = ExtResource("24_u86q5")
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="rang_charge" type="AudioStreamPlayer" parent="SFX" unique_id=770757316]
@@ -292,6 +483,19 @@ bus = &"SFX"
 unique_name_in_owner = true
 stream = ExtResource("23_avsg8")
 pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="rewind" type="AudioStreamPlayer" parent="SFX" unique_id=423725000]
+unique_name_in_owner = true
+stream = ExtResource("27_w51ui")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="clock" type="AudioStreamPlayer" parent="SFX" unique_id=171508080]
+unique_name_in_owner = true
+stream = ExtResource("28_slvv8")
+volume_db = 5.0
+pitch_scale = 0.1
 bus = &"SFX"
 
 [node name="rang_charge_bar" type="ProgressBar" parent="." unique_id=1810886969]
@@ -308,7 +512,23 @@ show_percentage = false
 current = true
 
 [node name="GUI" type="CanvasLayer" parent="." unique_id=1933383562]
+process_mode = 3
 script = ExtResource("25_ui1ln")
+
+[node name="PlrDead" parent="GUI" unique_id=1209202197 instance=ExtResource("28_80ryp")]
+unique_name_in_owner = true
+
+[node name="chromAbber" type="Sprite2D" parent="GUI" unique_id=1926780307]
+material = SubResource("ShaderMaterial_slvv8")
+use_parent_material = true
+position = Vector2(677, 356.50003)
+scale = Vector2(12.453125, 8.6171875)
+texture = ExtResource("29_v27kq")
+
+[node name="screenim" type="AnimationPlayer" parent="GUI" unique_id=312663973]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_w51ui")
+autoplay = &"start"
 
 [node name="Pause" type="CanvasLayer" parent="." unique_id=905008884]
 script = ExtResource("26_og23y")
@@ -317,8 +537,9 @@ script = ExtResource("26_og23y")
 unique_name_in_owner = true
 z_index = 5
 texture_filter = 1
+scale = Vector2(0.5, 0.5)
 texture = SubResource("PortableCompressedTexture2D_og23y")
-offset = Vector2(25, 0)
+offset = Vector2(100, 0)
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }

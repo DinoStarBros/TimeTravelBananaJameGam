@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://daemsm38ftcmj"]
+
+[ext_resource type="Script" uid="uid://cul0xhoceq5ua" path="res://Scenes/Plrdead/plr_dead.gd" id="1_jmsk8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jmsk8"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_h8hfs"]
+font_size = 20
+
+[node name="PlrDead" type="Control" unique_id=1209202197]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jmsk8")
+
+[node name="panel" type="PanelContainer" parent="." unique_id=1157919766]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -265.0
+offset_top = -145.0
+offset_right = 265.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="text" type="Label" parent="panel" unique_id=545856387]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Well That Won't Work..."
+label_settings = SubResource("LabelSettings_jmsk8")
+
+[node name="text2" type="Label" parent="panel" unique_id=1124501881]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Click to eat banana & rewind time"
+label_settings = SubResource("LabelSettings_h8hfs")
