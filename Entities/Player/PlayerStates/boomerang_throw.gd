@@ -20,6 +20,7 @@ func exit() -> void:
 
 func _spawn_bananarang() -> void:
 	var bananarang : Bananarang = References.bananarang_scn.instantiate()
+	bananarang.spd = p.bananarang_speed
 	Global.arena.add_child(bananarang)
 	bananarang.global_position = p.global_position
 	
