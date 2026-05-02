@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ccpt3ulk0uvgf" path="res://Entities/Player/player.tscn" id="3_wey4k"]
 [ext_resource type="Script" uid="uid://dt7cm1xlfpp7q" path="res://Entities/Player/camera.gd" id="4_n7pir"]
 [ext_resource type="PackedScene" uid="uid://cmd1vlynxp72q" path="res://Components/HitboxComponent/hitbox_component.tscn" id="6_f8dps"]
+[ext_resource type="Texture2D" uid="uid://d2eo7njr0p53g" path="res://Art/Stuff/Mow cured.png" id="7_f8dps"]
 [ext_resource type="PackedScene" uid="uid://cs1rxoq0ed6m7" path="res://Components/EnemySpawner/enemy_spawner.tscn" id="8_vhfm8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afj85"]
@@ -62,3 +63,9 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 one_shot = true
 autostart = true
+
+[node name="past_sprite" type="Sprite2D" parent="." unique_id=804627094]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.49803922)
+scale = Vector2(2, 2)
+texture = ExtResource("7_f8dps")

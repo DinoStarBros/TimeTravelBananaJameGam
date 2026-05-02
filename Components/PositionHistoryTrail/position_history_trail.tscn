@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d3btni8noxclj"]
+
+[ext_resource type="Script" uid="uid://b0hkxnmmuejvn" path="res://Components/PositionHistoryTrail/position_history_trail.gd" id="1_81odn"]
+
+[node name="PositionHistoryTrail" type="Node2D" unique_id=2061457982]
+script = ExtResource("1_81odn")

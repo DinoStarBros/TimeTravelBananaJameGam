@@ -8,6 +8,7 @@ var camera : Camera
 var player : Player
 var arena : Arena
 var current_game_state : game_states
+var past_sprite : Sprite2D
 
 const FALL_SPD_LIMIT : float = 2000
 

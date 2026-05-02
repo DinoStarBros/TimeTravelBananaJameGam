@@ -9,6 +9,7 @@ class_name Player
 @export var bananarang_speed : float = 1000
 @export var banana_throw_chrono_req : int = 1
 @export var rewind_ult_chrono_req : int = 10
+@export var rewind_time_seconds_past : float = 2
 
 @onready var sprite: Sprite2D = %Mow
 @onready var state_machine: StateMachine = %StateMachine
@@ -24,6 +25,8 @@ class_name Player
 @onready var slash_hitbox: HitboxComponent = %HitboxComponent
 @onready var chrono_bar: ProgressBar = %chrono_bar
 @onready var cm_text: Label = %cm_text
+@onready var position_history_record: PositionHistoryRecord = %PositionHistoryRecord
+@onready var position_history_trail: PositionHistoryTrail = %PositionHistoryTrail
 
 var x_input : int = 0
 var last_x_input : int = 1
@@ -93,6 +96,7 @@ func _physics_process(delta: float) -> void:
 	banana_pivot.visible = has_banana
 	arrow.look_at(get_global_mouse_position())
 	
+	Global.past_sprite.global_position = position_history_record.get_position_from_past(rewind_time_seconds_past)
 
 func x_move_handling(speed_mult : float = 1.0) -> void:
 	velocity.x = x_input * x_speed * speed_mult

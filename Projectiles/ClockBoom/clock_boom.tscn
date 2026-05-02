@@ -1,0 +1,62 @@
+[gd_scene format=4 uid="uid://b1xqk8l3n5sdp"]
+
+[ext_resource type="Script" uid="uid://bvlvieloatrnc" path="res://Projectiles/ClockBoom/clock_boom.gd" id="1_eccac"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_eccac"]
+_data = PackedByteArray("AAADAAUAAAABAAAAAAEAAAABAADIAQAAUklGRsABAABXRUJQVlA4TLMBAAAv/8A/EA8QEfMfQm6z7XEj/QQBMTHodA5i3ILD225FJTDce1kaS2EJDvdmIPH/PkleZwNE9H8CZLxWmfZPrddJcjWp2il+OJGymeK7iMi/CfJ6cLO8mxmkNe+LjF54m7EftOzGimUVM5Yc64M031in1onlW5GUXKsYTratbDlFlI4TNZ6z0wRO0Ow4XhM5TlMoyWqyYWSjSZYiakrROUbUecZOFxhPuidG0O0YXhcZna5nOF1hWF0mJMQQjC4RMmIJAhIK4rAe6bCIeGyLrOa3QwL2hDzNLyA7bIVs749HItYh/ePhkIJZJD9QdXjl5dpcjMjIVSZo/v8cUrAO6R8Pj0RshWzvT0B22BPyNL8dErAtsppfRDzWIx1WEIdlxBKMLhESYghWlwmCCNHpCqPT9Qyvi4yg2zGedE+MnS4wos4zis4xss5SjCZRktVkwxCnKUL1msgJmh1npwmcqPGconGcbFvZcpJrFcMR34pCPrVOrA+tN1YxY8mxshsrliWbsR9C/zJ24d3MIK15eT24WZ58H/yTCX84kbKZIleTqp1C/tR6lWlrlXf+U6212iW9Yw8A")
+size_override = Vector2(256, 256)
+
+[sub_resource type="Animation" id="Animation_yj45v"]
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8gbeq"]
+_data = {
+&"default": SubResource("Animation_yj45v")
+}
+
+[node name="ClockBoom" type="Node2D" unique_id=1426692458]
+script = ExtResource("1_eccac")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1591532652]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_eccac")
+hframes = 2
+vframes = 2
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://Art/CrokDag/clock.aseprite",
+"source_uid": 5090945359876800000
+}
+metadata/_aseprite_wizard_source_file_hash_ = "5d7f9956ec3a2911ff4d17b83de60820"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1584865479]
+libraries/ = SubResource("AnimationLibrary_8gbeq")

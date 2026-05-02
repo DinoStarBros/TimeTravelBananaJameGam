@@ -1,8 +1,11 @@
 [gd_scene format=4 uid="uid://ccpt3ulk0uvgf"]
 
 [ext_resource type="Script" uid="uid://ddfgra12fia2h" path="res://Entities/Player/player.gd" id="1_mv1ah"]
+[ext_resource type="PackedScene" uid="uid://d3btni8noxclj" path="res://Components/PositionHistoryTrail/position_history_trail.tscn" id="2_c0fwy"]
 [ext_resource type="Texture2D" uid="uid://dvamsylqvvrlj" path="res://Art/Stuff/Mow.png" id="2_iplt1"]
 [ext_resource type="PackedScene" uid="uid://b22elq4qgcjq7" path="res://Components/HurtboxComponent/hurtbox_component.tscn" id="2_og23y"]
+[ext_resource type="PackedScene" uid="uid://c7tyt784mm0qr" path="res://Components/PositionHistoryRecord/position_history_record.tscn" id="2_siu7b"]
+[ext_resource type="PackedScene" uid="uid://bk06nmn2v34da" path="res://Scenes/TrailSprite/trail_sprite.tscn" id="3_fe32i"]
 [ext_resource type="Script" uid="uid://cq31qgpvffhy8" path="res://StateMachineStuff/state_machine.gd" id="4_tekja"]
 [ext_resource type="Script" uid="uid://xlg5v4daw5s0" path="res://Entities/Player/PlayerStates/walkdle.gd" id="5_5c2io"]
 [ext_resource type="Script" uid="uid://b47lb8p18ml02" path="res://Entities/Player/PlayerStates/boomerang_charge.gd" id="6_4wf4l"]
@@ -337,7 +340,18 @@ collision_layer = 0
 script = ExtResource("1_mv1ah")
 slash_speed = 1500.0
 banana_throw_chrono_req = 2
+rewind_time_seconds_past = 4.0
 metadata/_edit_vertical_guides_ = [0.0]
+
+[node name="PositionHistoryTrail" parent="." unique_id=2061457982 node_paths=PackedStringArray("_history_node") instance=ExtResource("2_c0fwy")]
+unique_name_in_owner = true
+trail_length = 60
+trail_spacing = 0.1
+trail_sprite = ExtResource("3_fe32i")
+_history_node = NodePath("../PositionHistoryRecord")
+
+[node name="PositionHistoryRecord" parent="." unique_id=1186416600 instance=ExtResource("2_siu7b")]
+unique_name_in_owner = true
 
 [node name="HurtboxComponent" parent="." unique_id=1415980216 node_paths=PackedStringArray("health_component") instance=ExtResource("2_og23y")]
 collision_layer = 4

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bk06nmn2v34da"]
+
+[ext_resource type="Texture2D" uid="uid://d2eo7njr0p53g" path="res://Art/Stuff/Mow cured.png" id="1_f1vlc"]
+
+[node name="TrailSprite" type="Sprite2D" unique_id=149703022]
+self_modulate = Color(1, 1, 1, 0.49803922)
+scale = Vector2(2, 2)
+texture = ExtResource("1_f1vlc")
