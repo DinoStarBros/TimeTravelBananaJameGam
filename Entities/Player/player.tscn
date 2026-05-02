@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://d2x3yayfxcxqk" path="res://Entities/Player/PlayerStates/boomerang_throw.gd" id="7_01a4e"]
 [ext_resource type="Script" uid="uid://d4clgcc4hjp0c" path="res://Entities/Player/PlayerStates/attack.gd" id="8_lub02"]
 [ext_resource type="Script" uid="uid://tim43anrvaa7" path="res://Entities/Player/PlayerStates/jump.gd" id="9_x1y6q"]
+[ext_resource type="Script" uid="uid://u4eh8slvi04s" path="res://Entities/Player/PlayerStates/rewind.gd" id="10_x1y6q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lu8i8"]
 size = Vector2(50, 84)
@@ -53,6 +54,7 @@ script = ExtResource("8_lub02")
 [node name="Jump" type="Node" parent="StateMachine" unique_id=1848235840]
 script = ExtResource("9_x1y6q")
 
-[node name="Attack3" type="Node" parent="StateMachine" unique_id=841095829]
+[node name="Rewind" type="Node" parent="StateMachine" unique_id=2144808454]
+script = ExtResource("10_x1y6q")
 
-[node name="Attack4" type="Node" parent="StateMachine" unique_id=2144808454]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2036097099]
