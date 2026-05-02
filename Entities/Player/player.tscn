@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://njcv30k0or0v" path="res://Audio/jetslash sfx/slash.mp3" id="17_0poeq"]
 [ext_resource type="AudioStream" uid="uid://nj64nd85rtql" path="res://Audio/splashtownSFX/Airdash.wav" id="17_vskfa"]
 [ext_resource type="AudioStream" uid="uid://cw0s6bkxlwn2b" path="res://Audio/splashtownSFX/Jump.wav" id="18_pjcup"]
+[ext_resource type="Script" uid="uid://cibqw4kv8v0ll" path="res://Entities/Player/PlayerStates/past_explode.gd" id="20_1ii4q"]
 [ext_resource type="AudioStream" uid="uid://dynnvvkqumtas" path="res://Audio/BananTime/smacked.wav" id="20_ppdlg"]
 [ext_resource type="AudioStream" uid="uid://b625mnpt1ym4x" path="res://Audio/BananTime/unlockHold1.mp3" id="22_a8wow"]
 [ext_resource type="AudioStream" uid="uid://cryj6702ttly6" path="res://Audio/jetslash sfx/chargeslash.wav" id="23_avsg8"]
@@ -36,6 +37,9 @@
 [ext_resource type="AudioStream" uid="uid://dogbkcuv1aiuc" path="res://Audio/crokSfx/slow-cinematic-clock-ticking-405471.mp3" id="28_slvv8"]
 [ext_resource type="Shader" uid="uid://dir4gbhde8ffd" path="res://shaders/chromaticAberration.gdshader" id="29_kx1i7"]
 [ext_resource type="Texture2D" uid="uid://cnjyclcu2sh8l" path="res://icon.svg" id="29_v27kq"]
+[ext_resource type="AudioStream" uid="uid://j4035k5ucr6k" path="res://Audio/crokSfx/fronbondi_skegs-sfx-cinematic-fast-downer-sound-effect-249302.mp3" id="31_rkx17"]
+[ext_resource type="AudioStream" uid="uid://btoc7gcwarymr" path="res://Audio/amalgun/shoot.wav" id="32_qv8uv"]
+[ext_resource type="AudioStream" uid="uid://d0dlcg57pwrs6" path="res://Audio/planesfx/explosion-fx-343683.mp3" id="33_gds62"]
 [ext_resource type="PackedScene" uid="uid://bqrd0srtdaksn" path="res://SettingsMenu/settings_menu.tscn" id="34_l3oqu"]
 [ext_resource type="PackedScene" uid="uid://3mq7ntoru17f" path="res://Juices/ClockJuice/clock_juice.tscn" id="35_53w1c"]
 
@@ -423,6 +427,9 @@ script = ExtResource("7_01a4e")
 [node name="Rewind" type="Node" parent="StateMachine" unique_id=2144808454]
 script = ExtResource("10_x1y6q")
 
+[node name="PastExplode" type="Node" parent="StateMachine" unique_id=352929639]
+script = ExtResource("20_1ii4q")
+
 [node name="Dead" type="Node" parent="StateMachine" unique_id=1534403743]
 script = ExtResource("12_iplt1")
 
@@ -543,11 +550,28 @@ stream = ExtResource("27_w51ui")
 volume_db = -5.0
 bus = &"SFX"
 
+[node name="rewind2" type="AudioStreamPlayer" parent="SFX" unique_id=692380974]
+unique_name_in_owner = true
+stream = ExtResource("31_rkx17")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="rewind_step" type="AudioStreamPlayer" parent="SFX" unique_id=377174938]
+unique_name_in_owner = true
+stream = ExtResource("32_qv8uv")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="clock" type="AudioStreamPlayer" parent="SFX" unique_id=171508080]
 unique_name_in_owner = true
 stream = ExtResource("28_slvv8")
 volume_db = 5.0
 pitch_scale = 0.1
+bus = &"SFX"
+
+[node name="explode" type="AudioStreamPlayer" parent="SFX" unique_id=2064488407]
+unique_name_in_owner = true
+stream = ExtResource("33_gds62")
 bus = &"SFX"
 
 [node name="rang_charge_bar" type="ProgressBar" parent="." unique_id=1810886969]

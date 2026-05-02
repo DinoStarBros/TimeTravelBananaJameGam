@@ -1,7 +1,7 @@
 extends Node
 class_name State
 
-@onready var p : Player = owner
+@onready var p : CharacterBody2D = owner
 
 var state_machine : StateMachine
 var frames : int = 0

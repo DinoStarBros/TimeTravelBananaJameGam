@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://by7lbwkafeqyo"]
 
-[ext_resource type="Script" uid="uid://dtiq2luyai146" path="res://juices/ClickBoom/click_boom.gd" id="1_b1m18"]
+[ext_resource type="Script" uid="uid://dtiq2luyai146" path="res://Juices/ClickBoom/click_boom.gd" id="1_b1m18"]
 [ext_resource type="Texture2D" uid="uid://cb00doqsxr2ay" path="res://Art/Stuff2/shockwave-Sheet.png" id="2_063nm"]
-[ext_resource type="Material" uid="uid://bd8rbuci57hje" path="res://juices/ClickBoom/clickboom_particles.tres" id="3_26ote"]
+[ext_resource type="Material" uid="uid://bd8rbuci57hje" path="res://Juices/ClickBoom/clickboom_particles.tres" id="3_26ote"]
 
 [sub_resource type="Animation" id="Animation_063nm"]
 length = 0.001

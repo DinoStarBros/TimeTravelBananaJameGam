@@ -22,5 +22,5 @@ func _process(delta: float) -> void:
 
 func spawn_enemy() -> void:
 	path_follow_2d.progress_ratio = randf()
-	#enemy_spawner.spawn_enemy()
+	enemy_spawner.spawn_enemy()
 	spawn_timer.start(1)

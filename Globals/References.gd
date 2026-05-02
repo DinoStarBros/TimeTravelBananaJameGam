@@ -5,6 +5,7 @@ const hitspark_scn : PackedScene = preload("res://Juices/hitspark/hitspark.tscn"
 const big_cleave_scn : PackedScene = preload("res://Juices/BigCleave/big_cleave.tscn")
 const txt_scn : PackedScene = preload("res://Juices/DmgNum/dmg_num.tscn")
 const click_boom_scn : PackedScene = preload("res://Juices/ClickBoom/click_boom.tscn")
+const clock_boom_scn : PackedScene = preload("res://Projectiles/ClockBoom/clock_boom.tscn")
 
 const enemy_scns : Array[PackedScene] = [
 	preload("res://Entities/Chaser/chaser.tscn"),

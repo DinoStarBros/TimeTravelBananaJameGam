@@ -41,7 +41,10 @@ var slash_mode : bool = false
 var banan_desire_rot : float
 var rang_charge : float = 0
 var has_banana : float = true
-var chronometer : int = 10
+var chronometer : int = 10:
+	set(value):
+		chronometer = clamp(value, 0, max_chronometer)
+		
 
 const max_chronometer : int = 20
 const boomerang_throw_duration : float = 0.2
