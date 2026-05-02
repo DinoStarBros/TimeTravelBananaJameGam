@@ -22,6 +22,7 @@ GlobalSignals="*uid://bvrfcn21eb1i7"
 References="*uid://cg77e2ggql58v"
 MusicManager="*uid://bt5om726jb4ul"
 SceneManager="*uid://j20v4cg7v8m1"
+SaveLoad="*uid://bqgw3uq8245gu"
 
 [debug]
 

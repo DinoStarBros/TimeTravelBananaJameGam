@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://lifhoedrj3s4"]
+
+[ext_resource type="Script" uid="uid://bbh7kwb7k47wx" path="res://Juices/BigCleave/big_cleave.gd" id="1_buw7l"]
+[ext_resource type="Texture2D" uid="uid://bu0x7lpmcykd8" path="res://Art/CrokDag/slashCleaveThing.png" id="2_08u8k"]
+[ext_resource type="Shader" uid="uid://cne6u584nd6e4" path="res://shaders/hitFlash.gdshader" id="2_gpfdx"]
+
+[sub_resource type="Animation" id="Animation_gpfdx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SlashCleaveThing:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_08u8k"]
+resource_name = "w"
+length = 0.2
+step = 0.025
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SlashCleaveThing:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gpfdx"]
+_data = {
+&"RESET": SubResource("Animation_gpfdx"),
+&"w": SubResource("Animation_08u8k")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ptvxk"]
+resource_local_to_scene = true
+shader = ExtResource("2_gpfdx")
+shader_parameter/flash_color = Color(1, 1, 0.4117647, 1)
+shader_parameter/mix_value = 1.0
+shader_parameter/opacity = 1.0
+
+[node name="BigCleave" type="Node2D" unique_id=681172463]
+script = ExtResource("1_buw7l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1350955310]
+libraries/ = SubResource("AnimationLibrary_gpfdx")
+autoplay = &"w"
+
+[node name="SlashCleaveThing" type="Sprite2D" parent="." unique_id=1551222508]
+material = SubResource("ShaderMaterial_ptvxk")
+rotation = 0.7853982
+scale = Vector2(2, 2)
+texture = ExtResource("2_08u8k")

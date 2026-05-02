@@ -10,6 +10,7 @@ var dir_to_attack : Vector2
 func _ready() -> void:
 	sprite.texture = sprite_texture
 	_spawn_hitspark()
+	_spawn_big_cleave()
 	
 	velocity = -dir_to_attack * 1000
 	play_sfx()
@@ -30,6 +31,13 @@ func _spawn_hitspark() -> void:
 	Global.arena.add_child(hitspark)
 	hitspark.look_at(dir_to_attack + global_position)
 	hitspark.rotation += PI
+
+func _spawn_big_cleave() -> void:
+	var big_cleave : BigCleave = References.big_cleave_scn.instantiate()
+	big_cleave.global_position = global_position
+	Global.arena.add_child(big_cleave)
+	big_cleave.look_at(dir_to_attack + global_position)
+
 
 func play_sfx() -> void:
 	

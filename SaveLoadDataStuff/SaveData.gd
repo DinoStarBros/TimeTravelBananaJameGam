@@ -1,0 +1,9 @@
+extends Resource
+class_name SaveDataResource
+
+### SETTINGS DATA ###
+@export var master_volume : float = 0.75
+@export var music_volume : float = 0.75
+@export var sfx_volume : float = 0.75
+
+@export var screen_shake : bool = true

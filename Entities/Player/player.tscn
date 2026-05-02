@@ -33,6 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://dogbkcuv1aiuc" path="res://Audio/crokSfx/slow-cinematic-clock-ticking-405471.mp3" id="28_slvv8"]
 [ext_resource type="Shader" uid="uid://dir4gbhde8ffd" path="res://shaders/chromaticAberration.gdshader" id="29_kx1i7"]
 [ext_resource type="Texture2D" uid="uid://cnjyclcu2sh8l" path="res://icon.svg" id="29_v27kq"]
+[ext_resource type="PackedScene" uid="uid://bqrd0srtdaksn" path="res://SettingsMenu/settings_menu.tscn" id="34_l3oqu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_og23y"]
 size = Vector2(20, 53)
@@ -303,6 +304,7 @@ size_override = Vector2(128, 128)
 [node name="Player" type="CharacterBody2D" unique_id=1435043277]
 script = ExtResource("1_mv1ah")
 slash_speed = 1500.0
+metadata/_edit_vertical_guides_ = [0.0]
 
 [node name="HurtboxComponent" parent="." unique_id=1415980216 node_paths=PackedStringArray("health_component") instance=ExtResource("2_og23y")]
 collision_layer = 4
@@ -531,7 +533,10 @@ libraries/ = SubResource("AnimationLibrary_w51ui")
 autoplay = &"start"
 
 [node name="Pause" type="CanvasLayer" parent="." unique_id=905008884]
+process_mode = 3
 script = ExtResource("26_og23y")
+
+[node name="settingsMenu" parent="Pause" unique_id=68845947 instance=ExtResource("34_l3oqu")]
 
 [node name="arrow" type="Sprite2D" parent="." unique_id=740876187]
 unique_name_in_owner = true

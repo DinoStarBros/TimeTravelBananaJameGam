@@ -28,6 +28,18 @@ script = ExtResource("4_n7pir")
 [node name="Chaser" parent="." unique_id=1729735331 instance=ExtResource("6_afj85")]
 position = Vector2(237, 508)
 
+[node name="Chaser2" parent="." unique_id=406976909 instance=ExtResource("6_afj85")]
+position = Vector2(1104, 499)
+
+[node name="Chaser3" parent="." unique_id=747475595 instance=ExtResource("6_afj85")]
+position = Vector2(639, 274)
+
+[node name="Chaser4" parent="." unique_id=1804082875 instance=ExtResource("6_afj85")]
+position = Vector2(202, 365)
+
+[node name="Chaser5" parent="." unique_id=303573424 instance=ExtResource("6_afj85")]
+position = Vector2(1061, 339)
+
 [node name="HitboxComponent" parent="." unique_id=1415980216 instance=ExtResource("6_f8dps")]
 position = Vector2(640, 665.685)
 collision_mask = 4
