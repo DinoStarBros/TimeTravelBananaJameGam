@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ccpt3ulk0uvgf"]
+[gd_scene format=4 uid="uid://ccpt3ulk0uvgf"]
 
 [ext_resource type="Script" uid="uid://ddfgra12fia2h" path="res://Entities/Player/player.gd" id="1_mv1ah"]
 [ext_resource type="Texture2D" uid="uid://dvamsylqvvrlj" path="res://Art/Stuff/Mow.png" id="2_iplt1"]
@@ -7,18 +7,104 @@
 [ext_resource type="Script" uid="uid://b47lb8p18ml02" path="res://Entities/Player/PlayerStates/boomerang_charge.gd" id="6_4wf4l"]
 [ext_resource type="Script" uid="uid://d2x3yayfxcxqk" path="res://Entities/Player/PlayerStates/boomerang_throw.gd" id="7_01a4e"]
 [ext_resource type="Script" uid="uid://bb4d2ctgmmvdu" path="res://Entities/Player/PlayerStates/fall.gd" id="7_ap3xn"]
-[ext_resource type="Script" uid="uid://d4clgcc4hjp0c" path="res://Entities/Player/PlayerStates/attack.gd" id="8_lub02"]
+[ext_resource type="Script" uid="uid://d4clgcc4hjp0c" path="res://Entities/Player/PlayerStates/slash_attack.gd" id="8_lub02"]
 [ext_resource type="Script" uid="uid://tim43anrvaa7" path="res://Entities/Player/PlayerStates/jump.gd" id="9_x1y6q"]
 [ext_resource type="Script" uid="uid://m2ussrvc3xoh" path="res://Entities/Player/PlayerStates/dash.gd" id="10_ap3xn"]
 [ext_resource type="Script" uid="uid://u4eh8slvi04s" path="res://Entities/Player/PlayerStates/rewind.gd" id="10_x1y6q"]
 [ext_resource type="Script" uid="uid://c3orbbt247umu" path="res://Entities/Player/PlayerStates/dead.gd" id="12_iplt1"]
 [ext_resource type="PackedScene" uid="uid://cg1j2ioabubjc" path="res://Juices/trail/trail_fx.tscn" id="13_owvpp"]
+[ext_resource type="Script" uid="uid://bamojb4g42wal" path="res://Entities/Player/PlayerStates/hurt.gd" id="14_v7p16"]
+[ext_resource type="Texture2D" uid="uid://diihmdabfwa8g" path="res://Art/Placeholder/Trail2.png" id="14_xr8lj"]
+[ext_resource type="PackedScene" uid="uid://cmd1vlynxp72q" path="res://Components/HitboxComponent/hitbox_component.tscn" id="15_r8fok"]
+[ext_resource type="AudioStream" uid="uid://daiixog5jq884" path="res://Audio/cardtowersfx/sword_slash.wav" id="16_nhbkt"]
+[ext_resource type="AudioStream" uid="uid://njcv30k0or0v" path="res://Audio/jetslash sfx/slash.mp3" id="17_0poeq"]
+[ext_resource type="AudioStream" uid="uid://nj64nd85rtql" path="res://Audio/splashtownSFX/Airdash.wav" id="17_vskfa"]
+[ext_resource type="AudioStream" uid="uid://cw0s6bkxlwn2b" path="res://Audio/splashtownSFX/Jump.wav" id="18_pjcup"]
+[ext_resource type="AudioStream" uid="uid://dynnvvkqumtas" path="res://Audio/BananTime/smacked.wav" id="20_ppdlg"]
+[ext_resource type="AudioStream" uid="uid://b625mnpt1ym4x" path="res://Audio/BananTime/unlockHold1.mp3" id="22_a8wow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lu8i8"]
 size = Vector2(30, 64)
 
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_xr8lj"]
+_data = PackedByteArray("AAADAAUAAAABAAAAwAAAAIAAAAAWAQAAUklGRg4BAABXRUJQVlA4TAIBAAAvv8AfEA8w//M///Mf8IAb23bc5mO0IEQJKOWXRpTGUlACQ+0vwcN/krw7ieg/I7dtHHFOWzXlF/aDGw0uB5C1gN2wiIEOcGA3DxhVDChB4OSjEzwI9DrqWIJAy7xTSPOAJeMHu0lgPm7IHAicOIkS2FA5EOhchQdWsgoWDgQab6QAk0AwgDHwCS0ciDzUfbObE4+c1HOxrZIa6YXOt0TWPP4WOdJ2YwO7iKWxiESEbdU0eIy/FJ2we+2TjkyEQ/t/Gi2LTiiiDVXU4aL1CYv65RNg4vi8Xr9vrz+XJ863iDZk0Qk70Q3p1dvpY0D+sif1zdNOfYISXmcORH/1SeAHOAw=")
+size_override = Vector2(192, 128)
+
+[sub_resource type="Animation" id="Animation_r8fok"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slash_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xr8lj"]
+resource_name = "slash"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slash_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.02, 0.03, 0.04, 0.049999997),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.07),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nhbkt"]
+_data = {
+&"RESET": SubResource("Animation_r8fok"),
+&"slash": SubResource("Animation_xr8lj")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r8fok"]
+radius = 30.0
+height = 94.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8wow"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avsg8"]
+bg_color = Color(1, 1, 1, 1)
+
 [node name="Player" type="CharacterBody2D" unique_id=1435043277]
 script = ExtResource("1_mv1ah")
+slash_speed = 1000.0
 
 [node name="environmentCollision" type="CollisionShape2D" parent="." unique_id=403276698]
 shape = SubResource("RectangleShape2D_lu8i8")
@@ -57,10 +143,13 @@ script = ExtResource("9_x1y6q")
 [node name="Fall" type="Node" parent="StateMachine" unique_id=1150437295]
 script = ExtResource("7_ap3xn")
 
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=1881213255]
+script = ExtResource("14_v7p16")
+
 [node name="Dash" type="Node" parent="StateMachine" unique_id=944688220]
 script = ExtResource("10_ap3xn")
 
-[node name="Attack" type="Node" parent="StateMachine" unique_id=380533750]
+[node name="SlashAttack" type="Node" parent="StateMachine" unique_id=380533750]
 script = ExtResource("8_lub02")
 
 [node name="BoomerangCharge" type="Node" parent="StateMachine" unique_id=1519397031]
@@ -78,3 +167,108 @@ script = ExtResource("12_iplt1")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2036097099]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2139049666]
+unique_name_in_owner = true
+
+[node name="banana_pivot" type="Node2D" parent="." unique_id=809830918]
+unique_name_in_owner = true
+
+[node name="banana" type="Sprite2D" parent="banana_pivot" unique_id=43093735]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_xr8lj")
+offset = Vector2(0, -150)
+flip_h = true
+hframes = 2
+vframes = 2
+
+[node name="slash_sprite" type="Sprite2D" parent="banana_pivot" unique_id=1984746183]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(29.000004, 0)
+scale = Vector2(1.5, 1.5)
+texture = SubResource("PortableCompressedTexture2D_xr8lj")
+hframes = 3
+vframes = 2
+frame = 5
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "banana_pivot/slash_anim",
+"scale": "1.0",
+"slice": "",
+"source": "res://Art/BananTime/slash_trail.aseprite",
+"source_uid": 4155579216957074571
+}
+metadata/_aseprite_wizard_source_file_hash_ = "dc4c455025a9242491018d823ca28a0f"
+
+[node name="slash_anim" type="AnimationPlayer" parent="banana_pivot" unique_id=626335452]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_nhbkt")
+speed_scale = 0.4
+
+[node name="HitboxComponent" parent="banana_pivot" unique_id=1415980216 instance=ExtResource("15_r8fok")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="banana_pivot/HitboxComponent" unique_id=699070159]
+position = Vector2(33, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_r8fok")
+disabled = true
+
+[node name="SFX" type="Node" parent="." unique_id=822800580]
+
+[node name="slash" type="AudioStreamPlayer" parent="SFX" unique_id=1662040167]
+unique_name_in_owner = true
+stream = ExtResource("16_nhbkt")
+bus = &"SFX"
+
+[node name="slash2" type="AudioStreamPlayer" parent="SFX" unique_id=156096965]
+unique_name_in_owner = true
+stream = ExtResource("17_0poeq")
+volume_db = -5.0
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="dash" type="AudioStreamPlayer" parent="SFX" unique_id=897460159]
+unique_name_in_owner = true
+stream = ExtResource("17_vskfa")
+bus = &"SFX"
+
+[node name="jump" type="AudioStreamPlayer" parent="SFX" unique_id=1334277746]
+unique_name_in_owner = true
+stream = ExtResource("18_pjcup")
+bus = &"SFX"
+
+[node name="hurt" type="AudioStreamPlayer" parent="SFX" unique_id=554443515]
+unique_name_in_owner = true
+stream = ExtResource("20_ppdlg")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="rang_charge" type="AudioStreamPlayer" parent="SFX" unique_id=770757316]
+unique_name_in_owner = true
+stream = ExtResource("22_a8wow")
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="rang_charge_bar" type="ProgressBar" parent="." unique_id=1810886969]
+unique_name_in_owner = true
+offset_left = -46.0
+offset_top = -69.0
+offset_right = 50.0
+offset_bottom = -58.160004
+theme_override_styles/background = SubResource("StyleBoxFlat_a8wow")
+theme_override_styles/fill = SubResource("StyleBoxFlat_avsg8")
+show_percentage = false

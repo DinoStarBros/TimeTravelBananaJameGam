@@ -4,9 +4,16 @@ class_name Player
 @export var x_speed : float = 400
 @export var jump_speed : float = 600
 @export var dash_speed : float = 1200
+@export var slash_speed : float = 350
 
 @onready var sprite: Sprite2D = %Mow
 @onready var state_machine: StateMachine = %StateMachine
+@onready var banana_pivot: Node2D = %banana_pivot
+@onready var slash_anim: AnimationPlayer = %slash_anim
+@onready var anim: AnimationPlayer = %AnimationPlayer
+@onready var banana_sprite: Sprite2D = %banana
+@onready var slash_sprite: Sprite2D = %slash_sprite
+@onready var rang_charge_bar: ProgressBar = %rang_charge_bar
 
 var x_input : int = 0
 var last_x_input : int = 1
@@ -15,9 +22,18 @@ var jump_buffer_time : float = 0
 var enable_gravity : bool = true
 var coyote_time : float = 0
 var time_since_dash : float = 0
+var dir_to_mouse : Vector2
+var time_since_slash : float = 0
+var slash_mode : bool = false
+var banan_desire_rot : float
+var rang_charge : float = 0
 
 const dash_duration : float = 0.17
-const dash_cooldown : float = 0.3
+const dash_cooldown : float = 0.33
+const slash_duration : float = 0.2
+const slash_cooldown : float = 0.4
+const rang_charge_time_slow : float = 0.5
+const max_rang_charge : float = 0.3
 
 func _ready() -> void:
 	Global.player = self
@@ -37,20 +53,54 @@ func _physics_process(delta: float) -> void:
 		coyote_time = 0
 	
 	_x_input_handling()
+	banana_pivot_handling()
 	move_and_slide()
 	
-	time_since_dash = min(time_since_dash + delta, 3)
+	time_since_dash = min(time_since_dash + delta, 5)
+	time_since_slash = min(time_since_slash + delta, 5)
+	dir_to_mouse = global_position.direction_to(get_global_mouse_position())
+	banana_sprite.rotation = lerp(banana_sprite.rotation, banan_desire_rot, 15.0 * delta)
+	
+	rang_charge_bar.max_value = max_rang_charge
+	rang_charge_bar.value = rang_charge
+	
+	_banana_rot_handle(delta)
 
-func x_move_handling() -> void:
-	velocity.x = x_input * x_speed
+func x_move_handling(speed_mult : float = 1.0) -> void:
+	velocity.x = x_input * x_speed * speed_mult
 
 func dash_handling() -> void:
 	if Input.is_action_just_pressed("dash") and time_since_dash >= dash_cooldown:
 		state_machine.change_state("dash")
+		
+		%dash.pitch_scale = 1 + randf_range(-.1, .1)
+		%dash.play()
 
 func reset_sprite_flip_gravity() -> void:
 	enable_gravity = true
 	override_flip_sprite = false
+
+func banana_pivot_handling() -> void:
+	banana_pivot.look_at(get_global_mouse_position())
+
+func slash_attack_handling() -> void:
+	if Input.is_action_just_pressed("left_click") and time_since_slash >= slash_cooldown:
+		state_machine.change_state("slashattack")
+		
+		%slash.pitch_scale = 1 + randf_range(-.2, .2)
+		%slash.play()
+		%slash2.pitch_scale = 0.8 + randf_range(-.2, .2)
+		%slash2.play()
+		
+		slash_mode = !slash_mode
+		slash_anim.play("slash")
+		
+		
+		slash_sprite.flip_v = !slash_mode
+
+func boomerang_handle(delta: float) -> void:
+	if Input.is_action_pressed("right_click"):
+		state_machine.change_state("boomerangcharge")
 
 func _x_input_handling() -> void:
 	if Input.is_action_pressed("right"):
@@ -64,3 +114,23 @@ func _x_input_handling() -> void:
 	
 	if not override_flip_sprite:
 		sprite.flip_h = last_x_input == -1
+
+func _banana_rot_handle(delta: float) -> void:
+	if Input.is_action_pressed("right_click"):
+		if slash_mode:
+			banan_desire_rot = PI + deg_to_rad(20)
+		else:
+			banan_desire_rot = 0 - deg_to_rad(20)
+		
+		banana_sprite.position.x = randf_range(-10, 10)
+		banana_sprite.position.y = randf_range(-10, 10)
+		
+	else:
+		if slash_mode:
+			banan_desire_rot = PI
+		else:
+			banan_desire_rot = 0
+		
+		banana_sprite.position = Vector2.ZERO
+	
+	banana_sprite.flip_h = slash_mode

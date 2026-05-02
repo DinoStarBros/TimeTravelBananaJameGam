@@ -1,0 +1,17 @@
+extends State
+
+func enter() -> void:
+	p.enable_gravity = false
+	state_duration = p.slash_duration
+	p.velocity = p.dir_to_mouse * p.slash_speed
+
+func update(delta: float) -> void:
+	state_duration = max(state_duration - delta, 0)
+	if state_duration <= 0:
+		state_machine.change_state("walkdle")
+	
+	p.velocity *= 0.8
+
+func exit() -> void:
+	p.time_since_slash = 0
+	p.velocity.y = 0

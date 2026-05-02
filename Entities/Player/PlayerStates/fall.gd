@@ -21,3 +21,5 @@ func update(delta: float) -> void:
 		state_machine.change_state("jump")
 	
 	p.dash_handling()
+	p.slash_attack_handling()
+	p.boomerang_handle(delta)
