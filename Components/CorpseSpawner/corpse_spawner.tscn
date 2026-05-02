@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bonkmbhpx3de4"]
+
+[ext_resource type="Script" uid="uid://dvthuupwpnj6y" path="res://Components/CorpseSpawner/corpse_spawner.gd" id="1_nnpuf"]
+
+[node name="CorpseSpawner" type="Node2D" unique_id=1342225878]
+script = ExtResource("1_nnpuf")

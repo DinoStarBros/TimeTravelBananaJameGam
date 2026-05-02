@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ccpt3ulk0uvgf" path="res://Entities/Player/player.tscn" id="3_wey4k"]
 [ext_resource type="Script" uid="uid://dt7cm1xlfpp7q" path="res://Entities/Player/camera.gd" id="4_n7pir"]
 [ext_resource type="PackedScene" uid="uid://xwrm1hse6pjd" path="res://Scenes/ArenaHazard/arena_hazard.tscn" id="5_3lrh3"]
+[ext_resource type="PackedScene" uid="uid://c8446codes0tq" path="res://Entities/Chaser/chaser.tscn" id="6_afj85"]
 
 [node name="Arena" type="Node2D" unique_id=651972874]
 script = ExtResource("1_w8ma2")
@@ -24,3 +25,6 @@ script = ExtResource("4_n7pir")
 [node name="ArenaHazard" parent="." unique_id=882703594 instance=ExtResource("5_3lrh3")]
 collision_layer = 0
 collision_mask = 0
+
+[node name="Chaser" parent="." unique_id=1729735331 instance=ExtResource("6_afj85")]
+position = Vector2(243, 417)

@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cg1j2ioabubjc" path="res://Juices/trail/trail_fx.tscn" id="4_hcwjb"]
 [ext_resource type="PackedScene" uid="uid://cmd1vlynxp72q" path="res://Components/HitboxComponent/hitbox_component.tscn" id="5_bd5wq"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bd5wq"]
+radius = 22.0
+
 [node name="BananaRang" type="Node2D" unique_id=892829957]
 script = ExtResource("1_s7myl")
 
@@ -35,3 +38,7 @@ autostart = true
 MAX_LENGTH = 5.0
 
 [node name="HitboxComponent" parent="." unique_id=1415980216 instance=ExtResource("5_bd5wq")]
+collision_layer = 2
+
+[node name="hitb" type="CollisionShape2D" parent="HitboxComponent" unique_id=152698379]
+shape = SubResource("CircleShape2D_bd5wq")

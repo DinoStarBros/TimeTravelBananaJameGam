@@ -67,6 +67,7 @@ func _physics_process(delta: float) -> void:
 	
 	rang_charge_bar.max_value = max_rang_charge
 	rang_charge_bar.value = rang_charge
+	rang_charge_bar.visible = state_machine.current_state.name == "BoomerangCharge"
 	
 	_banana_rot_handle(delta)
 	

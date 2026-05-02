@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ddfgra12fia2h" path="res://Entities/Player/player.gd" id="1_mv1ah"]
 [ext_resource type="Texture2D" uid="uid://dvamsylqvvrlj" path="res://Art/Stuff/Mow.png" id="2_iplt1"]
+[ext_resource type="PackedScene" uid="uid://b22elq4qgcjq7" path="res://Components/HurtboxComponent/hurtbox_component.tscn" id="2_og23y"]
 [ext_resource type="Script" uid="uid://cq31qgpvffhy8" path="res://StateMachineStuff/state_machine.gd" id="4_tekja"]
 [ext_resource type="Script" uid="uid://xlg5v4daw5s0" path="res://Entities/Player/PlayerStates/walkdle.gd" id="5_5c2io"]
 [ext_resource type="Script" uid="uid://b47lb8p18ml02" path="res://Entities/Player/PlayerStates/boomerang_charge.gd" id="6_4wf4l"]
@@ -23,6 +24,12 @@
 [ext_resource type="AudioStream" uid="uid://dynnvvkqumtas" path="res://Audio/BananTime/smacked.wav" id="20_ppdlg"]
 [ext_resource type="AudioStream" uid="uid://b625mnpt1ym4x" path="res://Audio/BananTime/unlockHold1.mp3" id="22_a8wow"]
 [ext_resource type="AudioStream" uid="uid://cryj6702ttly6" path="res://Audio/jetslash sfx/chargeslash.wav" id="23_avsg8"]
+[ext_resource type="PackedScene" uid="uid://cbhff7nk3xl23" path="res://Components/HealthComponent/health_component.tscn" id="24_dv6dp"]
+[ext_resource type="Script" uid="uid://bfs780negrij7" path="res://Entities/Player/gui.gd" id="25_ui1ln"]
+[ext_resource type="Script" uid="uid://cvryjhhhtqecu" path="res://Entities/Player/pause.gd" id="26_og23y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_og23y"]
+size = Vector2(20, 53)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lu8i8"]
 size = Vector2(30, 64)
@@ -105,10 +112,23 @@ bg_color = Color(1, 1, 1, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=1435043277]
 script = ExtResource("1_mv1ah")
-slash_speed = 1000.0
+slash_speed = 1500.0
+
+[node name="HurtboxComponent" parent="." unique_id=1415980216 node_paths=PackedStringArray("health_component") instance=ExtResource("2_og23y")]
+collision_layer = 4
+health_component = NodePath("../HealthComponent")
+
+[node name="hurb" type="CollisionShape2D" parent="HurtboxComponent" unique_id=423481948]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_og23y")
+debug_color = Color(0.99742216, 0, 0.17616406, 0.41960785)
+
+[node name="HealthComponent" parent="." unique_id=1186497212 instance=ExtResource("24_dv6dp")]
+max_hp = 5
 
 [node name="environmentCollision" type="CollisionShape2D" parent="." unique_id=403276698]
 shape = SubResource("RectangleShape2D_lu8i8")
+debug_color = Color(0, 0.6, 0.7019608, 0)
 
 [node name="Mow" type="Sprite2D" parent="." unique_id=24386391]
 unique_name_in_owner = true
@@ -220,7 +240,7 @@ unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_nhbkt")
 speed_scale = 0.4
 
-[node name="HitboxComponent" parent="banana_pivot" unique_id=1415980216 instance=ExtResource("15_r8fok")]
+[node name="HitboxComponent" parent="banana_pivot" unique_id=1901029091 instance=ExtResource("15_r8fok")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="banana_pivot/HitboxComponent" unique_id=699070159]
 position = Vector2(33, 0)
@@ -282,3 +302,9 @@ show_percentage = false
 
 [node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=288530981]
 current = true
+
+[node name="GUI" type="CanvasLayer" parent="." unique_id=1933383562]
+script = ExtResource("25_ui1ln")
+
+[node name="Pause" type="CanvasLayer" parent="." unique_id=905008884]
+script = ExtResource("26_og23y")
