@@ -7,6 +7,7 @@ class_name Player
 @export var slash_speed : float = 350
 @export var boomerang_throw_recoil : float = 500
 @export var bananarang_speed : float = 1000
+@export var banana_throw_chrono_req : int = 1
 
 @onready var sprite: Sprite2D = %Mow
 @onready var state_machine: StateMachine = %StateMachine
@@ -17,6 +18,11 @@ class_name Player
 @onready var slash_sprite: Sprite2D = %slash_sprite
 @onready var rang_charge_bar: ProgressBar = %rang_charge_bar
 @onready var arrow: Sprite2D = %arrow
+@onready var clock_juice: ClockJuice = %ClockJuice
+@onready var hurtbox: CollisionShape2D = %hurtbox
+@onready var slash_hitbox: HitboxComponent = %HitboxComponent
+@onready var chrono_bar: ProgressBar = %chrono_bar
+@onready var cm_text: Label = %cm_text
 
 var x_input : int = 0
 var last_x_input : int = 1
@@ -31,9 +37,11 @@ var slash_mode : bool = false
 var banan_desire_rot : float
 var rang_charge : float = 0
 var has_banana : float = true
+var chronometer : int = 10
 
+const max_chronometer : int = 20
 const boomerang_throw_duration : float = 0.2
-const dash_duration : float = 0.17
+const dash_duration : float = 0.2
 const dash_cooldown : float = 0.33
 const slash_duration : float = 0.2
 const slash_cooldown : float = 0.4
@@ -43,8 +51,15 @@ const max_rang_charge : float = 0.3
 func _ready() -> void:
 	Global.player = self
 	Global.current_game_state = Global.game_states.COMBAT
+	slash_hitbox.Hit.connect(func(attack:Attack): chronometer += 1)
 
 func _physics_process(delta: float) -> void:
+	cm_text.text = str(
+		chronometer, " / ", max_chronometer
+	)
+	chrono_bar.max_value = max_chronometer
+	chrono_bar.value = chronometer
+	
 	if not is_on_floor():
 		if enable_gravity:
 			if velocity.y < 0:
@@ -114,8 +129,10 @@ func slash_attack_handling() -> void:
 func boomerang_handle(delta: float) -> void:
 	if !has_banana: return
 	
-	if Input.is_action_pressed("right_click"):
-		state_machine.change_state("boomerangcharge")
+	if chronometer >= banana_throw_chrono_req:
+	
+		if Input.is_action_pressed("right_click"):
+			state_machine.change_state("boomerangcharge")
 
 func _x_input_handling() -> void:
 	if Input.is_action_pressed("right"):
@@ -129,6 +146,9 @@ func _x_input_handling() -> void:
 	
 	if not override_flip_sprite:
 		sprite.flip_h = last_x_input == -1
+
+func rewind_ult_handling() -> void:
+	pass
 
 func _banana_rot_handle(delta: float) -> void:
 	if Input.is_action_pressed("right_click"):

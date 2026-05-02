@@ -34,6 +34,7 @@
 [ext_resource type="Shader" uid="uid://dir4gbhde8ffd" path="res://shaders/chromaticAberration.gdshader" id="29_kx1i7"]
 [ext_resource type="Texture2D" uid="uid://cnjyclcu2sh8l" path="res://icon.svg" id="29_v27kq"]
 [ext_resource type="PackedScene" uid="uid://bqrd0srtdaksn" path="res://SettingsMenu/settings_menu.tscn" id="34_l3oqu"]
+[ext_resource type="PackedScene" uid="uid://3mq7ntoru17f" path="res://Juices/ClockJuice/clock_juice.tscn" id="35_53w1c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_og23y"]
 size = Vector2(20, 53)
@@ -173,6 +174,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("chromAbber:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_kx1i7"]
 resource_name = "rewind"
@@ -247,7 +260,19 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [2.0, 0.09999999999999999]
+"values": [2.0, 0.1]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("chromAbber:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_slvv8"]
@@ -297,23 +322,33 @@ _data = {
 &"start": SubResource("Animation_slvv8")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_53w1c"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_siu7b"]
+font_size = 25
+
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_og23y"]
 _data = PackedByteArray("AAADAAUAAAABAAAAgAAAAIAAAAD2AAAAUklGRu4AAABXRUJQVlA4TOEAAAAvf8AfEA8w//M///Mf8IBbW3vb5v3GOVYWXKoyVmDpDI2iMZyJ0TAKRkDpgENV/NCriuj/BHDJeuxKXbiu665t16Fr6Cp91pNdT1poNxC0AV60E3xqBX60bFTTHGUhpQXZC0eSJwUhQ4SoGCNMQnJM0ExYMBnNzRFojp+FEGkLqhe++fGUKEz8BPIoNKsj6SxM/EQYhW9agChE2oLk55JncuSFsOBsFDeXHSNUmyuWIrwyX8kBnoSB7OFWOFAceAGKkZ1UoZh0BxX5AK/aFp60K9hrDhaakZwG2XpO9A5dl8kA")
 size_override = Vector2(128, 128)
 
 [node name="Player" type="CharacterBody2D" unique_id=1435043277]
+collision_layer = 0
 script = ExtResource("1_mv1ah")
 slash_speed = 1500.0
+banana_throw_chrono_req = 2
 metadata/_edit_vertical_guides_ = [0.0]
 
 [node name="HurtboxComponent" parent="." unique_id=1415980216 node_paths=PackedStringArray("health_component") instance=ExtResource("2_og23y")]
 collision_layer = 4
 health_component = NodePath("../HealthComponent")
 
-[node name="hurb" type="CollisionShape2D" parent="HurtboxComponent" unique_id=423481948]
+[node name="hurtbox" type="CollisionShape2D" parent="HurtboxComponent" unique_id=423481948]
+unique_name_in_owner = true
+z_index = 10
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_og23y")
-debug_color = Color(0.99742216, 0, 0.17616406, 0.41960785)
+debug_color = Color(0.99607843, 0, 0.1764706, 1)
 
 [node name="HealthComponent" parent="." unique_id=1186497212 instance=ExtResource("24_dv6dp")]
 unique_name_in_owner = true
@@ -431,6 +466,7 @@ libraries/ = SubResource("AnimationLibrary_nhbkt")
 speed_scale = 0.4
 
 [node name="HitboxComponent" parent="banana_pivot" unique_id=1901029091 instance=ExtResource("15_r8fok")]
+unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="banana_pivot/HitboxComponent" unique_id=699070159]
 position = Vector2(33, 0)
@@ -519,8 +555,10 @@ script = ExtResource("25_ui1ln")
 
 [node name="PlrDead" parent="GUI" unique_id=1209202197 instance=ExtResource("28_80ryp")]
 unique_name_in_owner = true
+visible = false
 
 [node name="chromAbber" type="Sprite2D" parent="GUI" unique_id=1926780307]
+visible = false
 material = SubResource("ShaderMaterial_slvv8")
 use_parent_material = true
 position = Vector2(677, 356.50003)
@@ -532,13 +570,39 @@ unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_w51ui")
 autoplay = &"start"
 
+[node name="chrono_bar" type="ProgressBar" parent="GUI" unique_id=542389893]
+unique_name_in_owner = true
+offset_left = 27.0
+offset_top = 668.0
+offset_right = 359.0
+offset_bottom = 704.0
+show_percentage = false
+
+[node name="aof" type="Label" parent="GUI/chrono_bar" unique_id=4678002]
+layout_mode = 0
+offset_top = -35.0
+offset_right = 145.0
+offset_bottom = -5.0
+text = "Chrono Meter:"
+label_settings = SubResource("LabelSettings_53w1c")
+
+[node name="cm_text" type="Label" parent="GUI/chrono_bar" unique_id=2103388371]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 141.0
+offset_top = 3.0
+offset_right = 181.0
+offset_bottom = 29.0
+text = "0/20"
+label_settings = SubResource("LabelSettings_siu7b")
+
 [node name="Pause" type="CanvasLayer" parent="." unique_id=905008884]
 process_mode = 3
+visible = false
 script = ExtResource("26_og23y")
 
 [node name="settingsMenu" parent="Pause" unique_id=68845947 instance=ExtResource("34_l3oqu")]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -603,3 +667,7 @@ metadata/_aseprite_wizard_config_ = {
 "source_uid": 8433940340145152951
 }
 metadata/_aseprite_wizard_source_file_hash_ = "4a145c0fd2a44e6cf330b3986623982f"
+
+[node name="ClockJuice" parent="." unique_id=1233225325 instance=ExtResource("35_53w1c")]
+unique_name_in_owner = true
+scale = Vector2(1e-05, 1e-05)

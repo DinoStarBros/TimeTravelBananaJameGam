@@ -2,6 +2,8 @@ extends State
 
 func enter() -> void:
 	%rang_charge.play()
+	p.clock_juice.enabled = true
+	p.chronometer -= p.banana_throw_chrono_req
 
 func physics_update(delta: float) -> void:
 	p.x_move_handling()
@@ -20,3 +22,4 @@ func exit() -> void:
 	Engine.time_scale = 1
 	%rang_charge.stop()
 	p.rang_charge = 0
+	p.clock_juice.enabled = false

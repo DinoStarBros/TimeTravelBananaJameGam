@@ -4,11 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://bn200tim80d5i" path="res://Art/Placeholder/Eneme.png" id="2_cunvg"]
 [ext_resource type="PackedScene" uid="uid://b22elq4qgcjq7" path="res://Components/HurtboxComponent/hurtbox_component.tscn" id="3_45tkn"]
 [ext_resource type="Script" uid="uid://cq31qgpvffhy8" path="res://StateMachineStuff/state_machine.gd" id="4_wb51q"]
-[ext_resource type="Script" uid="uid://dwc2p0hn6smxj" path="res://Entities/Chaser/States/chase.gd" id="5_5j0x1"]
+[ext_resource type="Script" uid="uid://pp233uppacdi" path="res://Entities/Chaser/States/chase.gd" id="5_5j0x1"]
 [ext_resource type="PackedScene" uid="uid://bonkmbhpx3de4" path="res://Components/CorpseSpawner/corpse_spawner.tscn" id="5_8orw2"]
-[ext_resource type="Script" uid="uid://qordvq36gq6" path="res://Entities/Chaser/States/dash_attack.gd" id="6_uwmqw"]
+[ext_resource type="Script" uid="uid://fs5158nbl8kg" path="res://Entities/Chaser/States/dash_wind.gd" id="6_uwmqw"]
 [ext_resource type="PackedScene" uid="uid://cmd1vlynxp72q" path="res://Components/HitboxComponent/hitbox_component.tscn" id="7_uwmqw"]
 [ext_resource type="PackedScene" uid="uid://cbhff7nk3xl23" path="res://Components/HealthComponent/health_component.tscn" id="8_1arn3"]
+[ext_resource type="Script" uid="uid://d3ywcx3apkp3v" path="res://Entities/Chaser/States/dash_attack.gd" id="10_fmjrj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1arn3"]
 size = Vector2(60, 68)
@@ -23,17 +24,8 @@ region = Rect2(0, 0, 24, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3plm2"]
 size = Vector2(44, 62)
 
-[sub_resource type="Animation" id="Animation_1arn3"]
-resource_name = "death"
-length = 0.5
-step = 0.1
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8orw2"]
-_data = {
-&"death": SubResource("Animation_1arn3")
-}
-
 [node name="Chaser" type="CharacterBody2D" unique_id=1729735331]
+collision_layer = 0
 script = ExtResource("1_3plm2")
 
 [node name="HitboxComponent" parent="." unique_id=401942623 instance=ExtResource("7_uwmqw")]
@@ -67,18 +59,20 @@ texture = ExtResource("2_cunvg")
 hframes = 5
 
 [node name="Label" type="Label" parent="." unique_id=401613099]
+visible = false
 offset_right = 40.0
 offset_bottom = 17.0
 
-[node name="StateMachine" type="Node" parent="." unique_id=113287310 node_paths=PackedStringArray("debug")]
+[node name="StateMachine" type="Node" parent="." unique_id=551127861 node_paths=PackedStringArray("initial_state", "debug")]
 script = ExtResource("4_wb51q")
+initial_state = NodePath("Chase")
 debug = NodePath("../Label")
 
-[node name="Chase" type="Node" parent="StateMachine" unique_id=1368949787]
+[node name="Chase" type="Node" parent="StateMachine" unique_id=1553978449]
 script = ExtResource("5_5j0x1")
 
-[node name="DashAttack" type="Node" parent="StateMachine" unique_id=1517877290]
+[node name="DashWind" type="Node" parent="StateMachine" unique_id=763697576]
 script = ExtResource("6_uwmqw")
 
-[node name="anim" type="AnimationPlayer" parent="." unique_id=1600452551]
-libraries/ = SubResource("AnimationLibrary_8orw2")
+[node name="DashAttack" type="Node" parent="StateMachine" unique_id=666074702]
+script = ExtResource("10_fmjrj")

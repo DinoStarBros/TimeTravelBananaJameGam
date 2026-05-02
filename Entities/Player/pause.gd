@@ -13,14 +13,6 @@ func _ready() -> void:
 		settings_menu._save()
 		)
 
-func _input(event: InputEvent) -> void:
-	if (Input.is_action_just_pressed("esc") and 
-		Global.current_game_state == Global.game_states.COMBAT
-		):
-			pause_or_resume()
-	
-	if Global.current_game_state != Global.game_states.COMBAT:
-		settings_menu.hide()
 
 func pause_or_resume() -> void:
 	get_tree().paused = not get_tree().paused
@@ -34,6 +26,15 @@ func pause_or_resume() -> void:
 
 func _process(delta: float) -> void:
 	visible = get_tree().paused
+
+	if (Input.is_action_just_pressed("esc") and 
+		Global.current_game_state == Global.game_states.COMBAT
+		):
+			pause_or_resume()
+	
+	if Global.current_game_state == Global.game_states.DEAD:
+		hide()
+		settings_menu.hide()
 
 func on_resume() -> void:
 	get_tree().paused = false

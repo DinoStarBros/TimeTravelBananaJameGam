@@ -19,3 +19,4 @@ func physics_update(delta: float) -> void:
 	p.dash_handling()
 	p.slash_attack_handling()
 	p.boomerang_handle(delta)
+	p.rewind_ult_handling()

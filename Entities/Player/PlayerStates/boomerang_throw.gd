@@ -10,14 +10,16 @@ func enter() -> void:
 	
 	_spawn_bananarang()
 	Global.camera.screen_shake(7, 0.05)
+	p.hurtbox.disabled = true
 
 func physics_update(delta: float) -> void:
 	state_duration = max(state_duration - delta, 0)
 	if state_duration <= 0:
 		state_machine.change_state("walkdle")
+	p.rewind_ult_handling()
 
 func exit() -> void:
-	pass
+	p.hurtbox.disabled = false
 
 func _spawn_bananarang() -> void:
 	var bananarang : Bananarang = References.bananarang_scn.instantiate()

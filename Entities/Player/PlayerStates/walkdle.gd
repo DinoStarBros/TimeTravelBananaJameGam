@@ -12,13 +12,10 @@ func physics_update(delta: float) -> void:
 		if Input.is_action_pressed("down"):
 			p.global_position.y += 1
 	
-	
-	
 	if p.velocity.y > 0:
 		state_machine.change_state("fall")
-	
-
 	
 	p.dash_handling()
 	p.slash_attack_handling()
 	p.boomerang_handle(delta)
+	p.rewind_ult_handling()
