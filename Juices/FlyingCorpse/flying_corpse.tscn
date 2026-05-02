@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cw0s6bkxlwn2b" path="res://Audio/splashtownSFX/Jump.wav" id="5_vigy8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o2fbd"]
+resource_local_to_scene = true
 shader = ExtResource("2_8afjc")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/mix_value = 0.0

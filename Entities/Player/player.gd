@@ -8,6 +8,7 @@ class_name Player
 @export var boomerang_throw_recoil : float = 500
 @export var bananarang_speed : float = 1000
 @export var banana_throw_chrono_req : int = 1
+@export var rewind_ult_chrono_req : int = 10
 
 @onready var sprite: Sprite2D = %Mow
 @onready var state_machine: StateMachine = %StateMachine
@@ -47,6 +48,7 @@ const slash_duration : float = 0.2
 const slash_cooldown : float = 0.4
 const rang_charge_time_slow : float = 0.5
 const max_rang_charge : float = 0.3
+const rewind_duration : float = 1
 
 func _ready() -> void:
 	Global.player = self
@@ -148,7 +150,13 @@ func _x_input_handling() -> void:
 		sprite.flip_h = last_x_input == -1
 
 func rewind_ult_handling() -> void:
-	pass
+	if not (chronometer >= rewind_ult_chrono_req):
+		return
+	
+	if Input.is_action_just_pressed("r"):
+		chronometer -= rewind_ult_chrono_req
+		
+		state_machine.change_state("Rewind")
 
 func _banana_rot_handle(delta: float) -> void:
 	if Input.is_action_pressed("right_click"):

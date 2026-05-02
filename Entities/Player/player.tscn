@@ -348,7 +348,7 @@ unique_name_in_owner = true
 z_index = 10
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_og23y")
-debug_color = Color(0.99607843, 0, 0.1764706, 1)
+debug_color = Color(0.99607843, 0, 0.1764706, 0)
 
 [node name="HealthComponent" parent="." unique_id=1186497212 instance=ExtResource("24_dv6dp")]
 unique_name_in_owner = true
