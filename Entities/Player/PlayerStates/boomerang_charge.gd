@@ -17,6 +17,9 @@ func physics_update(delta: float) -> void:
 			state_machine.change_state("boomerangthrow")
 		else:
 			state_machine.change_state("walkdle")
+		
+	if Input.is_action_pressed("down") and p.is_on_floor():
+		p.global_position.y += 1
 	
 	p.rang_charge += delta
 

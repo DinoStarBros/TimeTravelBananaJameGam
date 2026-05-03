@@ -18,7 +18,6 @@
 [ext_resource type="Script" uid="uid://c3orbbt247umu" path="res://Entities/Player/PlayerStates/dead.gd" id="12_iplt1"]
 [ext_resource type="PackedScene" uid="uid://cg1j2ioabubjc" path="res://Juices/trail/trail_fx.tscn" id="13_owvpp"]
 [ext_resource type="Script" uid="uid://bamojb4g42wal" path="res://Entities/Player/PlayerStates/hurt.gd" id="14_v7p16"]
-[ext_resource type="Texture2D" uid="uid://diihmdabfwa8g" path="res://Art/Placeholder/Trail2.png" id="14_xr8lj"]
 [ext_resource type="PackedScene" uid="uid://cmd1vlynxp72q" path="res://Components/HitboxComponent/hitbox_component.tscn" id="15_r8fok"]
 [ext_resource type="AudioStream" uid="uid://daiixog5jq884" path="res://Audio/cardtowersfx/sword_slash.wav" id="16_nhbkt"]
 [ext_resource type="AudioStream" uid="uid://njcv30k0or0v" path="res://Audio/jetslash sfx/slash.mp3" id="17_0poeq"]
@@ -28,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://dynnvvkqumtas" path="res://Audio/BananTime/smacked.wav" id="20_ppdlg"]
 [ext_resource type="AudioStream" uid="uid://b625mnpt1ym4x" path="res://Audio/BananTime/unlockHold1.mp3" id="22_a8wow"]
 [ext_resource type="AudioStream" uid="uid://cryj6702ttly6" path="res://Audio/jetslash sfx/chargeslash.wav" id="23_avsg8"]
+[ext_resource type="Texture2D" uid="uid://bog413nskyqj0" path="res://Art/BananTime/bananer.png" id="23_d17g3"]
 [ext_resource type="PackedScene" uid="uid://cbhff7nk3xl23" path="res://Components/HealthComponent/health_component.tscn" id="24_dv6dp"]
 [ext_resource type="AudioStream" uid="uid://ch1w4vdpx17ux" path="res://Audio/BananTime/u_zpj3vbdres-monkey-128368.mp3" id="24_u86q5"]
 [ext_resource type="Script" uid="uid://bfs780negrij7" path="res://Entities/Player/gui.gd" id="25_ui1ln"]
@@ -43,6 +43,7 @@
 [ext_resource type="PackedScene" uid="uid://bqrd0srtdaksn" path="res://SettingsMenu/settings_menu.tscn" id="34_l3oqu"]
 [ext_resource type="PackedScene" uid="uid://3mq7ntoru17f" path="res://Juices/ClockJuice/clock_juice.tscn" id="35_53w1c"]
 [ext_resource type="Texture2D" uid="uid://d31hdne52dndk" path="res://Art/uiButtons.png" id="40_520x1"]
+[ext_resource type="PackedScene" uid="uid://daabkudw03d4q" path="res://Scenes/PlrAbilities/plr_abilities.tscn" id="41_0bw0x"]
 [ext_resource type="Texture2D" uid="uid://b2e50hn2busxu" path="res://Art/Stuff2/2d_lights_and_shadows_neutral_point_light.webp" id="44_mycwr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_og23y"]
@@ -517,9 +518,13 @@ _data = {
 
 [sub_resource type="LabelSettings" id="LabelSettings_53w1c"]
 font_size = 30
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_siu7b"]
 font_size = 25
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_og23y"]
 _data = PackedByteArray("AAADAAUAAAABAAAAgAAAAIAAAAD2AAAAUklGRu4AAABXRUJQVlA4TOEAAAAvf8AfEA8w//M///Mf8IBbW3vb5v3GOVYWXKoyVmDpDI2iMZyJ0TAKRkDpgENV/NCriuj/BHDJeuxKXbiu665t16Fr6Cp91pNdT1poNxC0AV60E3xqBX60bFTTHGUhpQXZC0eSJwUhQ4SoGCNMQnJM0ExYMBnNzRFojp+FEGkLqhe++fGUKEz8BPIoNKsj6SxM/EQYhW9agChE2oLk55JncuSFsOBsFDeXHSNUmyuWIrwyX8kBnoSB7OFWOFAceAGKkZ1UoZh0BxX5AK/aFp60K9hrDhaakZwG2XpO9A5dl8kA")
@@ -685,16 +690,14 @@ libraries/ = SubResource("AnimationLibrary_0bw0x")
 
 [node name="banana_pivot" type="Node2D" parent="." unique_id=809830918]
 unique_name_in_owner = true
+z_index = 10
 
 [node name="banana" type="Sprite2D" parent="banana_pivot" unique_id=43093735]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 0, 1)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("14_xr8lj")
-offset = Vector2(0, -150)
+texture = ExtResource("23_d17g3")
+offset = Vector2(0, -35)
 flip_h = true
-hframes = 2
-vframes = 2
+flip_v = true
 
 [node name="slash_sprite" type="Sprite2D" parent="banana_pivot" unique_id=1984746183]
 unique_name_in_owner = true
@@ -840,6 +843,19 @@ unique_name_in_owner = true
 process_mode = 3
 script = ExtResource("25_ui1ln")
 
+[node name="Pause" type="Button" parent="GUI" unique_id=1289981006]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 34.0
+offset_bottom = 106.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+icon = ExtResource("40_520x1")
+
 [node name="PlrDead" parent="GUI" unique_id=1209202197 instance=ExtResource("28_80ryp")]
 unique_name_in_owner = true
 visible = false
@@ -883,18 +899,9 @@ offset_bottom = 29.0
 text = "0/20"
 label_settings = SubResource("LabelSettings_siu7b")
 
-[node name="Pause" type="Button" parent="GUI" unique_id=1289981006]
-unique_name_in_owner = true
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -72.0
-offset_top = 34.0
-offset_bottom = 106.0
-grow_horizontal = 0
-scale = Vector2(0.5, 0.5)
-focus_mode = 0
-icon = ExtResource("40_520x1")
+[node name="PlrAbilities" parent="GUI" unique_id=1307372770 node_paths=PackedStringArray("player") instance=ExtResource("41_0bw0x")]
+position = Vector2(1047, 649)
+player = NodePath("../..")
 
 [node name="Pause" type="CanvasLayer" parent="." unique_id=905008884]
 process_mode = 3

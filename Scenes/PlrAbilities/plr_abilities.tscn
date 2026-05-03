@@ -1,0 +1,207 @@
+[gd_scene format=4 uid="uid://daabkudw03d4q"]
+
+[ext_resource type="Script" uid="uid://cve23cgnip8tb" path="res://Scenes/PlrAbilities/plr_abilities.gd" id="1_nn5ox"]
+[ext_resource type="Texture2D" uid="uid://cd38mm010muvw" path="res://Art/KenneyPCInput/light/mouse/lblabel.svg" id="2_sy8gb"]
+[ext_resource type="Texture2D" uid="uid://cybwbqhax4fsc" path="res://Art/Stuff2/ctweapOutline.png" id="3_04nyx"]
+[ext_resource type="Texture2D" uid="uid://bog413nskyqj0" path="res://Art/BananTime/bananer.png" id="4_jjra4"]
+[ext_resource type="Texture2D" uid="uid://b65sfjcksvexi" path="res://Art/KenneyPCInput/light/mouse/rblabel.svg" id="5_b51ec"]
+[ext_resource type="Texture2D" uid="uid://cceiqewgfg6k4" path="res://Art/KenneyPCInput/light/key/alphanum/fill/r.svg" id="6_y0fkf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy8gb"]
+bg_color = Color(0.96711296, 0.61495197, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04nyx"]
+bg_color = Color(0.41099015, 0.82272947, 2.3102762e-06, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b51ec"]
+font_size = 20
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0fkf"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_b51ec"]
+_data = PackedByteArray("AAADAAUAAAABAAAAAAEAAAABAADIAQAAUklGRsABAABXRUJQVlA4TLMBAAAv/8A/EA8QEfMfQm6z7XEj/QQBMTHodA5i3ILD225FJTDce1kaS2EJDvdmIPH/PkleZwNE9H8CZLxWmfZPrddJcjWp2il+OJGymeK7iMi/CfJ6cLO8mxmkNe+LjF54m7EftOzGimUVM5Yc64M031in1onlW5GUXKsYTratbDlFlI4TNZ6z0wRO0Ow4XhM5TlMoyWqyYWSjSZYiakrROUbUecZOFxhPuidG0O0YXhcZna5nOF1hWF0mJMQQjC4RMmIJAhIK4rAe6bCIeGyLrOa3QwL2hDzNLyA7bIVs749HItYh/ePhkIJZJD9QdXjl5dpcjMjIVSZo/v8cUrAO6R8Pj0RshWzvT0B22BPyNL8dErAtsppfRDzWIx1WEIdlxBKMLhESYghWlwmCCNHpCqPT9Qyvi4yg2zGedE+MnS4wos4zis4xss5SjCZRktVkwxCnKUL1msgJmh1npwmcqPGconGcbFvZcpJrFcMR34pCPrVOrA+tN1YxY8mxshsrliWbsR9C/zJ24d3MIK15eT24WZ58H/yTCX84kbKZIleTqp1C/tR6lWlrlXf+U6212iW9Yw8A")
+size_override = Vector2(256, 256)
+
+[node name="PlrAbilities" type="Node2D" unique_id=356133174]
+script = ExtResource("1_nn5ox")
+
+[node name="slash" type="PanelContainer" parent="." unique_id=778283997]
+custom_minimum_size = Vector2(64, 64)
+offset_top = -20.0
+offset_right = 64.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sy8gb")
+
+[node name="CtweapOutline" type="Sprite2D" parent="slash" unique_id=1089991008]
+position = Vector2(22, 23)
+scale = Vector2(0.705, 0.705)
+texture = ExtResource("3_04nyx")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="Lblabel" type="Sprite2D" parent="slash/CtweapOutline" unique_id=1506934331]
+position = Vector2(35.46099, 24.113478)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_sy8gb")
+
+[node name="rang" type="PanelContainer" parent="." unique_id=934273482]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+offset_left = 77.0
+offset_right = 141.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_04nyx")
+
+[node name="rb" type="Sprite2D" parent="rang" unique_id=1239299136]
+position = Vector2(51, 36)
+scale = Vector2(0.3525, 0.3525)
+texture = ExtResource("5_b51ec")
+
+[node name="Line2D" type="Line2D" parent="rang" unique_id=2117144695]
+position = Vector2(20, 6.000001)
+scale = Vector2(0.99999994, 0.99999994)
+points = PackedVector2Array(10.607, 0, -19.092, 0)
+width = 1.0
+
+[node name="Line2D2" type="Line2D" parent="rang" unique_id=1539012134]
+position = Vector2(15, 13)
+scale = Vector2(0.99999994, 0.99999994)
+points = PackedVector2Array(10.607, 0, -19.092, 0)
+width = 1.0
+
+[node name="Line2D3" type="Line2D" parent="rang" unique_id=293504147]
+position = Vector2(15, 23)
+scale = Vector2(0.99999994, 0.99999994)
+points = PackedVector2Array(10.607, 0, -19.092, 0)
+width = 1.0
+
+[node name="Line2D4" type="Line2D" parent="rang" unique_id=625863830]
+position = Vector2(22, 31)
+scale = Vector2(0.99999994, 0.99999994)
+points = PackedVector2Array(10.607, 0, -19.092, 0)
+width = 1.0
+
+[node name="Bananer" type="Sprite2D" parent="rang" unique_id=360061189]
+position = Vector2(39, 18.000002)
+rotation = 0.7853982
+texture = ExtResource("4_jjra4")
+
+[node name="wod" type="Label" parent="rang" unique_id=1931088766]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "2"
+label_settings = SubResource("LabelSettings_b51ec")
+
+[node name="rew" type="PanelContainer" parent="." unique_id=199089814]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+offset_left = 155.0
+offset_right = 219.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y0fkf")
+
+[node name="wod" type="Label" parent="rew" unique_id=997216273]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "10"
+label_settings = SubResource("LabelSettings_b51ec")
+
+[node name="clock" type="Sprite2D" parent="rew" unique_id=1120566104]
+texture_filter = 1
+position = Vector2(24, 22.000002)
+scale = Vector2(0.345, 0.345)
+texture = SubResource("PortableCompressedTexture2D_b51ec")
+hframes = 2
+vframes = 2
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "rang2/AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://Art/CrokDag/clock.aseprite",
+"source_uid": 5090945359876800000
+}
+metadata/_aseprite_wizard_source_file_hash_ = "5d7f9956ec3a2911ff4d17b83de60820"
+
+[node name="hand" type="Sprite2D" parent="rew/clock" unique_id=787180901]
+texture_filter = 1
+rotation = -1.5707964
+texture = SubResource("PortableCompressedTexture2D_b51ec")
+hframes = 2
+vframes = 2
+frame = 1
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "rang2/AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://Art/CrokDag/clock.aseprite",
+"source_uid": 5090945359876800000
+}
+metadata/_aseprite_wizard_source_file_hash_ = "5d7f9956ec3a2911ff4d17b83de60820"
+
+[node name="hand2" type="Sprite2D" parent="rew/clock" unique_id=194596105]
+texture_filter = 1
+rotation = -2.3561945
+texture = SubResource("PortableCompressedTexture2D_b51ec")
+hframes = 2
+vframes = 2
+frame = 2
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "rang2/AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://Art/CrokDag/clock.aseprite",
+"source_uid": 5090945359876800000
+}
+metadata/_aseprite_wizard_source_file_hash_ = "5d7f9956ec3a2911ff4d17b83de60820"
+
+[node name="R" type="Sprite2D" parent="rew" unique_id=1376572994]
+position = Vector2(60, 48)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_y0fkf")

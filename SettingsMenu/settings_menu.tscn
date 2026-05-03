@@ -25,10 +25,9 @@ offset_bottom = 624.0
 [node name="Tabs" type="TabContainer" parent="PanelContainer" unique_id=917003247]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-current_tab = 1
+current_tab = 0
 
 [node name="Audio" type="VBoxContainer" parent="PanelContainer/Tabs" unique_id=1785194851]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -69,6 +68,7 @@ step = 0.15
 tick_count = 11
 
 [node name="Accessiblity" type="VBoxContainer" parent="PanelContainer/Tabs" unique_id=1868874210]
+visible = false
 layout_mode = 2
 alignment = 1
 metadata/_tab_index = 1
