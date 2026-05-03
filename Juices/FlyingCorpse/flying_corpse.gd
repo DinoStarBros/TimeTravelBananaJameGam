@@ -9,6 +9,7 @@ var dir_to_attack : Vector2
 
 func _ready() -> void:
 	#sprite.texture = sprite_texture
+	Global.add_score(20, global_position)
 	_spawn_hitspark()
 	_spawn_big_cleave()
 	

@@ -8,6 +8,9 @@ func _ready() -> void:
 	velocity = direction * 1000
 	await get_tree().process_frame
 	_spawn_click_boom()
+	
+	Global.add_score(40, global_position)
+	Global.spawn_splash_txt(global_position, 0.7, "Parry!")
 
 func _physics_process(delta: float) -> void:
 	_move(delta)

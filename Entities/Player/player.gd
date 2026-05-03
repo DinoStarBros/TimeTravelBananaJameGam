@@ -61,6 +61,7 @@ func _ready() -> void:
 	Global.player = self
 	Global.current_game_state = Global.game_states.COMBAT
 	slash_hitbox.Hit.connect(func(attack:Attack): chronometer += 1)
+	Global.score = 0
 
 func _physics_process(delta: float) -> void:
 	

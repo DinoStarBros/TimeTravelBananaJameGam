@@ -10,6 +10,7 @@ var arena : Arena
 var current_game_state : game_states
 var past_sprite : Sprite2D
 var time_passed : float
+var score : int 
 
 const FALL_SPD_LIMIT : float = 2000
 
@@ -35,3 +36,15 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_volume_handle()
+
+func add_score(amount: int, pos: Vector2) -> void:
+	score += amount
+	spawn_splash_txt(pos, 0.5, str("+",amount))
+
+func spawn_splash_txt(pos: Vector2, scale_x: float, text: String) -> void:
+	var txt : DmgNum = References.txt_scn.instantiate()
+	txt.text = text 
+	Global.arena.add_child(txt)
+	txt.global_position = pos
+	txt.scale.x = scale_x
+	txt.scale.y = txt.scale.x

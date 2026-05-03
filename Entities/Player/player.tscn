@@ -50,7 +50,7 @@
 size = Vector2(20, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lu8i8"]
-size = Vector2(30, 49)
+size = Vector2(50, 49)
 
 [sub_resource type="Animation" id="Animation_0bw0x"]
 length = 0.001
@@ -526,6 +526,11 @@ font_size = 25
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_0bw0x"]
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+outline_size = 10
+
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_og23y"]
 _data = PackedByteArray("AAADAAUAAAABAAAAgAAAAIAAAAD2AAAAUklGRu4AAABXRUJQVlA4TOEAAAAvf8AfEA8w//M///Mf8IBbW3vb5v3GOVYWXKoyVmDpDI2iMZyJ0TAKRkDpgENV/NCriuj/BHDJeuxKXbiu665t16Fr6Cp91pNdT1poNxC0AV60E3xqBX60bFTTHGUhpQXZC0eSJwUhQ4SoGCNMQnJM0ExYMBnNzRFojp+FEGkLqhe++fGUKEz8BPIoNKsj6SxM/EQYhW9agChE2oLk55JncuSFsOBsFDeXHSNUmyuWIrwyX8kBnoSB7OFWOFAceAGKkZ1UoZh0BxX5AK/aFp60K9hrDhaakZwG2XpO9A5dl8kA")
 size_override = Vector2(128, 128)
@@ -902,6 +907,15 @@ label_settings = SubResource("LabelSettings_siu7b")
 [node name="PlrAbilities" parent="GUI" unique_id=1307372770 node_paths=PackedStringArray("player") instance=ExtResource("41_0bw0x")]
 position = Vector2(1047, 649)
 player = NodePath("../..")
+
+[node name="score_count" type="Label" parent="GUI" unique_id=1845921956]
+unique_name_in_owner = true
+offset_left = 38.0
+offset_top = 38.0
+offset_right = 149.0
+offset_bottom = 79.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_0bw0x")
 
 [node name="Pause" type="CanvasLayer" parent="." unique_id=905008884]
 process_mode = 3

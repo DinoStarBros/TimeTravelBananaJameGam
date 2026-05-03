@@ -3,10 +3,14 @@
 [ext_resource type="Script" uid="uid://cul0xhoceq5ua" path="res://Scenes/Plrdead/plr_dead.gd" id="1_jmsk8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jmsk8"]
-font_size = 40
+font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_h8hfs"]
-font_size = 20
+font_size = 30
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="PlrDead" type="Control" unique_id=1209202197]
 layout_mode = 3
@@ -24,22 +28,23 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -265.0
-offset_top = -145.0
-offset_right = 265.0
-offset_bottom = 145.0
+offset_left = -361.0
+offset_top = -199.0
+offset_right = 361.0
+offset_bottom = 199.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="text" type="Label" parent="panel" unique_id=545856387]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Well That Won't Work..."
+text = "I should try something else next time..."
 label_settings = SubResource("LabelSettings_jmsk8")
 
 [node name="text2" type="Label" parent="panel" unique_id=1124501881]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-text = "Click to eat banana & rewind time"
+text = "Press Enter to eat banana & rewind time"
 label_settings = SubResource("LabelSettings_h8hfs")

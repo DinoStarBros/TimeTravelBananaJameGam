@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c4ecfyprkicdg"]
 
 [ext_resource type="Script" uid="uid://cqajv1pu3i67b" path="res://Screens/TitleScreen/title_screen.gd" id="1_des2l"]
+[ext_resource type="Texture2D" uid="uid://cooc4pfja388u" path="res://Art/BananTime/bananaClock2x2.png" id="2_vnbe3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_des2l"]
 font_size = 72
@@ -17,6 +18,212 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_des2l")
 
+[node name="BGs" type="Node2D" parent="." unique_id=814565788]
+unique_name_in_owner = true
+
+[node name="bg1" type="Node2D" parent="BGs" unique_id=1507048274]
+unique_name_in_owner = true
+
+[node name="bc2" type="Sprite2D" parent="BGs/bg1" unique_id=1373921055]
+texture = ExtResource("2_vnbe3")
+
+[node name="bc3" type="Sprite2D" parent="BGs/bg1" unique_id=2055120869]
+position = Vector2(512, 0)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc4" type="Sprite2D" parent="BGs/bg1" unique_id=665125752]
+position = Vector2(1024, 0)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc5" type="Sprite2D" parent="BGs/bg1" unique_id=2013279001]
+position = Vector2(1536, 0)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc6" type="Sprite2D" parent="BGs/bg1" unique_id=1285489456]
+position = Vector2(0, 512)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc7" type="Sprite2D" parent="BGs/bg1" unique_id=357685721]
+position = Vector2(512, 512)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc8" type="Sprite2D" parent="BGs/bg1" unique_id=4051856]
+position = Vector2(1024, 512)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc9" type="Sprite2D" parent="BGs/bg1" unique_id=1794400754]
+position = Vector2(1536, 512)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc10" type="Sprite2D" parent="BGs/bg1" unique_id=338196930]
+position = Vector2(0, 1024)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc11" type="Sprite2D" parent="BGs/bg1" unique_id=1335872963]
+position = Vector2(512, 1024)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc12" type="Sprite2D" parent="BGs/bg1" unique_id=1617649256]
+position = Vector2(1024, 1024)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc13" type="Sprite2D" parent="BGs/bg1" unique_id=1906890411]
+position = Vector2(1536, 1024)
+texture = ExtResource("2_vnbe3")
+
+[node name="bg2" type="Node2D" parent="BGs" unique_id=403082256]
+unique_name_in_owner = true
+position = Vector2(2048, 0)
+
+[node name="bc2" type="Sprite2D" parent="BGs/bg2" unique_id=1512299582]
+texture = ExtResource("2_vnbe3")
+
+[node name="bc3" type="Sprite2D" parent="BGs/bg2" unique_id=534932165]
+position = Vector2(512, 0)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc4" type="Sprite2D" parent="BGs/bg2" unique_id=1928925694]
+position = Vector2(1024, 0)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc5" type="Sprite2D" parent="BGs/bg2" unique_id=1738465678]
+position = Vector2(1536, 0)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc6" type="Sprite2D" parent="BGs/bg2" unique_id=2114652013]
+position = Vector2(0, 512)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc7" type="Sprite2D" parent="BGs/bg2" unique_id=2129331512]
+position = Vector2(512, 512)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc8" type="Sprite2D" parent="BGs/bg2" unique_id=1992023033]
+position = Vector2(1024, 512)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc9" type="Sprite2D" parent="BGs/bg2" unique_id=143620826]
+position = Vector2(1536, 512)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc10" type="Sprite2D" parent="BGs/bg2" unique_id=268148261]
+position = Vector2(0, 1024)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc11" type="Sprite2D" parent="BGs/bg2" unique_id=2071689605]
+position = Vector2(512, 1024)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc12" type="Sprite2D" parent="BGs/bg2" unique_id=120567417]
+position = Vector2(1024, 1024)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc13" type="Sprite2D" parent="BGs/bg2" unique_id=1711945202]
+position = Vector2(1536, 1024)
+texture = ExtResource("2_vnbe3")
+
+[node name="bg3" type="Node2D" parent="BGs" unique_id=296396559]
+unique_name_in_owner = true
+position = Vector2(0, 1536)
+
+[node name="bc2" type="Sprite2D" parent="BGs/bg3" unique_id=134567150]
+texture = ExtResource("2_vnbe3")
+
+[node name="bc3" type="Sprite2D" parent="BGs/bg3" unique_id=800505026]
+position = Vector2(512, 0)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc4" type="Sprite2D" parent="BGs/bg3" unique_id=1469572714]
+position = Vector2(1024, 0)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc5" type="Sprite2D" parent="BGs/bg3" unique_id=2123094070]
+position = Vector2(1536, 0)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc6" type="Sprite2D" parent="BGs/bg3" unique_id=1584498186]
+position = Vector2(0, 512)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc7" type="Sprite2D" parent="BGs/bg3" unique_id=1813692151]
+position = Vector2(512, 512)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc8" type="Sprite2D" parent="BGs/bg3" unique_id=1911396722]
+position = Vector2(1024, 512)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc9" type="Sprite2D" parent="BGs/bg3" unique_id=1476070783]
+position = Vector2(1536, 512)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc10" type="Sprite2D" parent="BGs/bg3" unique_id=907344876]
+position = Vector2(0, 1024)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc11" type="Sprite2D" parent="BGs/bg3" unique_id=1932128195]
+position = Vector2(512, 1024)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc12" type="Sprite2D" parent="BGs/bg3" unique_id=1157785781]
+position = Vector2(1024, 1024)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc13" type="Sprite2D" parent="BGs/bg3" unique_id=2090507528]
+position = Vector2(1536, 1024)
+texture = ExtResource("2_vnbe3")
+
+[node name="bg4" type="Node2D" parent="BGs" unique_id=1473171849]
+unique_name_in_owner = true
+position = Vector2(2048, 1536)
+
+[node name="bc2" type="Sprite2D" parent="BGs/bg4" unique_id=1374740464]
+texture = ExtResource("2_vnbe3")
+
+[node name="bc3" type="Sprite2D" parent="BGs/bg4" unique_id=1809969542]
+position = Vector2(512, 0)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc4" type="Sprite2D" parent="BGs/bg4" unique_id=1781617407]
+position = Vector2(1024, 0)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc5" type="Sprite2D" parent="BGs/bg4" unique_id=578175404]
+position = Vector2(1536, 0)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc6" type="Sprite2D" parent="BGs/bg4" unique_id=1189506879]
+position = Vector2(0, 512)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc7" type="Sprite2D" parent="BGs/bg4" unique_id=516720534]
+position = Vector2(512, 512)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc8" type="Sprite2D" parent="BGs/bg4" unique_id=1630724940]
+position = Vector2(1024, 512)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc9" type="Sprite2D" parent="BGs/bg4" unique_id=670508631]
+position = Vector2(1536, 512)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc10" type="Sprite2D" parent="BGs/bg4" unique_id=1602155723]
+position = Vector2(0, 1024)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc11" type="Sprite2D" parent="BGs/bg4" unique_id=1707216389]
+position = Vector2(512, 1024)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc12" type="Sprite2D" parent="BGs/bg4" unique_id=1488225644]
+position = Vector2(1024, 1024)
+texture = ExtResource("2_vnbe3")
+
+[node name="bc13" type="Sprite2D" parent="BGs/bg4" unique_id=1540511813]
+position = Vector2(1536, 1024)
+texture = ExtResource("2_vnbe3")
+
 [node name="title_text" type="Label" parent="." unique_id=1856567381]
 layout_mode = 1
 anchors_preset = 5
@@ -26,7 +233,7 @@ offset_left = -302.0
 offset_right = 302.0
 offset_bottom = 17.0
 grow_horizontal = 2
-text = "Time Travel Banana"
+text = "Chronana"
 label_settings = SubResource("LabelSettings_des2l")
 horizontal_alignment = 1
 vertical_alignment = 1

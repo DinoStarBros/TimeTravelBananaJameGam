@@ -1,11 +1,15 @@
 extends Control
 
+const strings : Array[String] = [
+	"I should try something else next time...",
+	"Well, that won't work...",
+	"I have to remember to avoid that...",
+	"Well, that's just unfair...",
+	"I should learn how to avoid that...",
+	
+]
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	%text.text = str(
+		strings.pick_random()
+	)
