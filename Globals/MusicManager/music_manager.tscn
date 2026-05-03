@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://bt5om726jb4ul"]
 
 [ext_resource type="Script" uid="uid://c11c4vpijm0lj" path="res://Globals/MusicManager/music_manager.gd" id="1_fjkhl"]
+[ext_resource type="AudioStream" uid="uid://brf543r1ru30n" path="res://Audio/Music/thingding.mp3" id="2_rrprg"]
 
 [node name="MusicManager" type="Node" unique_id=1224638921]
 process_mode = 3
 script = ExtResource("1_fjkhl")
+
+[node name="CombatMusic" type="AudioStreamPlayer" parent="." unique_id=571880366]
+unique_name_in_owner = true
+stream = ExtResource("2_rrprg")
+volume_db = -5.0
+bus = &"Music"

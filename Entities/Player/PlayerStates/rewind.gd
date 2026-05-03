@@ -20,6 +20,8 @@ func enter() -> void:
 	%clock.play()
 	%rewind_step.pitch_scale = 0.1
 	
+	Global.camera.screen_shake(5, 1)
+
 
 func physics_update(delta: float) -> void:
 	state_duration = max(state_duration - delta, 0)

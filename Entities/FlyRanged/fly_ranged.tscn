@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dylxh3vvuguok"]
+
+[ext_resource type="Script" uid="uid://r0v4282hihwa" path="res://Entities/FlyRanged/fly_ranged.gd" id="1_snurf"]
+
+[node name="FlyRanged" type="CharacterBody2D" unique_id=1499005049]
+script = ExtResource("1_snurf")

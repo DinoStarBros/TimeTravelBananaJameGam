@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://conebc2af8g3t"]
+
+[ext_resource type="Script" uid="uid://cbex34mave24v" path="res://Entities/FlyMelee/fly_melee.gd" id="1_c83h3"]
+
+[node name="FlyMelee" type="CharacterBody2D" unique_id=1499005049]
+script = ExtResource("1_c83h3")

@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://c8446codes0tq"]
 
 [ext_resource type="Script" uid="uid://cqnbxbbao60tn" path="res://Entities/Chaser/chaser.gd" id="1_3plm2"]
-[ext_resource type="Texture2D" uid="uid://bn200tim80d5i" path="res://Art/Placeholder/Eneme.png" id="2_cunvg"]
 [ext_resource type="PackedScene" uid="uid://b22elq4qgcjq7" path="res://Components/HurtboxComponent/hurtbox_component.tscn" id="3_45tkn"]
 [ext_resource type="Script" uid="uid://cq31qgpvffhy8" path="res://StateMachineStuff/state_machine.gd" id="4_wb51q"]
 [ext_resource type="Script" uid="uid://pp233uppacdi" path="res://Entities/Chaser/States/chase.gd" id="5_5j0x1"]
 [ext_resource type="PackedScene" uid="uid://bonkmbhpx3de4" path="res://Components/CorpseSpawner/corpse_spawner.tscn" id="5_8orw2"]
 [ext_resource type="Script" uid="uid://fs5158nbl8kg" path="res://Entities/Chaser/States/dash_wind.gd" id="6_uwmqw"]
+[ext_resource type="Texture2D" uid="uid://dr3e3b73xlh20" path="res://Art/BananTime/monke.png" id="6_vhpg7"]
 [ext_resource type="PackedScene" uid="uid://cmd1vlynxp72q" path="res://Components/HitboxComponent/hitbox_component.tscn" id="7_uwmqw"]
 [ext_resource type="PackedScene" uid="uid://cbhff7nk3xl23" path="res://Components/HealthComponent/health_component.tscn" id="8_1arn3"]
 [ext_resource type="Script" uid="uid://d3ywcx3apkp3v" path="res://Entities/Chaser/States/dash_attack.gd" id="10_fmjrj"]
@@ -17,16 +17,13 @@ size = Vector2(60, 68)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45tkn"]
 size = Vector2(62, 70)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8orw2"]
-atlas = ExtResource("2_cunvg")
-region = Rect2(0, 0, 24, 24)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3plm2"]
-size = Vector2(44, 62)
+size = Vector2(54, 68)
 
-[node name="Chaser" type="CharacterBody2D" unique_id=1729735331]
+[node name="Chaser" type="CharacterBody2D" unique_id=1729735331 node_paths=PackedStringArray("sprite")]
 collision_layer = 0
 script = ExtResource("1_3plm2")
+sprite = NodePath("Eneme")
 
 [node name="HitboxComponent" parent="." unique_id=401942623 instance=ExtResource("7_uwmqw")]
 collision_mask = 4
@@ -47,16 +44,18 @@ debug_color = Color(0.99215686, 0, 0.27450982, 0)
 corpse_spawner = NodePath("../CorpseSpawner")
 
 [node name="CorpseSpawner" parent="." unique_id=1342225878 instance=ExtResource("5_8orw2")]
-corpse_texture = SubResource("AtlasTexture_8orw2")
+corpse_texture = ExtResource("6_vhpg7")
+corpse_color = Color(1, 0.4, 0.4, 1)
 
 [node name="environmentCollision" type="CollisionShape2D" parent="." unique_id=297967454]
 shape = SubResource("RectangleShape2D_3plm2")
 debug_color = Color(0, 0.6, 0.7019608, 0)
 
 [node name="Eneme" type="Sprite2D" parent="." unique_id=381982725]
-scale = Vector2(2.6, 2.6)
-texture = ExtResource("2_cunvg")
-hframes = 5
+unique_name_in_owner = true
+self_modulate = Color(1, 0.39999998, 0.39999998, 1)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("6_vhpg7")
 
 [node name="Label" type="Label" parent="." unique_id=401613099]
 visible = false

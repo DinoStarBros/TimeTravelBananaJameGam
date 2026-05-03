@@ -15,7 +15,7 @@ class_name Player
 @onready var state_machine: StateMachine = %StateMachine
 @onready var banana_pivot: Node2D = %banana_pivot
 @onready var slash_anim: AnimationPlayer = %slash_anim
-@onready var anim: AnimationPlayer = %AnimationPlayer
+@onready var anim: AnimationPlayer = %anims
 @onready var banana_sprite: Sprite2D = %banana
 @onready var slash_sprite: Sprite2D = %slash_sprite
 @onready var rang_charge_bar: ProgressBar = %rang_charge_bar
@@ -27,6 +27,7 @@ class_name Player
 @onready var cm_text: Label = %cm_text
 @onready var position_history_record: PositionHistoryRecord = %PositionHistoryRecord
 @onready var position_history_trail: PositionHistoryTrail = %PositionHistoryTrail
+@onready var outlines: Node2D = %outlines
 
 var x_input : int = 0
 var last_x_input : int = 1
@@ -48,7 +49,7 @@ var chronometer : int = 10:
 
 const max_chronometer : int = 20
 const boomerang_throw_duration : float = 0.2
-const dash_duration : float = 0.2
+const dash_duration : float = 0.3
 const dash_cooldown : float = 0.33
 const slash_duration : float = 0.2
 const slash_cooldown : float = 0.4
@@ -62,6 +63,7 @@ func _ready() -> void:
 	slash_hitbox.Hit.connect(func(attack:Attack): chronometer += 1)
 
 func _physics_process(delta: float) -> void:
+	
 	cm_text.text = str(
 		chronometer, " / ", max_chronometer
 	)
@@ -100,6 +102,12 @@ func _physics_process(delta: float) -> void:
 	arrow.look_at(get_global_mouse_position())
 	
 	Global.past_sprite.global_position = position_history_record.get_position_from_past(rewind_time_seconds_past)
+
+func _process(delta: float) -> void:
+	if sprite.flip_h:
+		outlines.scale.x = -1
+	else:
+		outlines.scale.x = 1
 
 func x_move_handling(speed_mult : float = 1.0) -> void:
 	velocity.x = x_input * x_speed * speed_mult

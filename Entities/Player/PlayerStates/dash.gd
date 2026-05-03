@@ -7,6 +7,7 @@ func enter() -> void:
 	p.override_flip_sprite = true
 	state_duration = p.dash_duration
 	p.hurtbox.disabled = true
+	%anims.play("dash")
 
 func physics_update(delta: float) -> void:
 	p.slash_attack_handling()

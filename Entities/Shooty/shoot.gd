@@ -6,6 +6,9 @@ extends State
 func enter() -> void:
 	state_duration = p.attack_duration
 	_spawn_bullet()
+	
+	%shotSfx.pitch_scale += randf_range(-.2,.2)
+	%shotSfx.play(.08)
 
 func physics_update(delta: float) -> void:
 	state_duration = max(0, state_duration-delta)

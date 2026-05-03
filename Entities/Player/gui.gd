@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var health_component: HealthComponent = %HealthComponent
 
 var died : bool = false
+var darken_desire_col : Color = Color.WHITE
 
 func _ready() -> void:
 	get_tree().paused = false

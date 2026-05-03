@@ -18,8 +18,10 @@ func _ready() -> void:
 	Global.past_sprite = %past_sprite
 	spawn_timer.timeout.connect(spawn_enemy)
 	
-	for n in 100:
-		print(get_enemy_spawn_time(n*60))
+	MusicManager.play_song("Combat")
+	
+	#for n in 100:
+	#	print(get_enemy_spawn_count(n))
 
 func _process(delta: float) -> void:
 	
@@ -27,11 +29,14 @@ func _process(delta: float) -> void:
 	camera.global_position.x = lerp(camera.global_position.x, cam_desire_pos.x, 15.0 * delta)
 
 func spawn_enemy() -> void:
-	path_follow_2d.progress_ratio = randf()
-	enemy_spawner.spawn_enemy()
 	spawn_timer.start(
 		get_enemy_spawn_time(Global.time_passed)
 	)
+	
+	for n in get_enemy_spawn_count(get_current_minute(Global.time_passed)):
+		path_follow_2d.progress_ratio = randf()
+		enemy_spawner.spawn_enemy()
+
 
 func get_enemy_spawn_time(time_passed: float) -> float:
 	return (
@@ -42,6 +47,9 @@ func get_enemy_spawn_time(time_passed: float) -> float:
 		)
 	)
 	
+
+func get_enemy_spawn_count(minute: int) -> int:
+	return (minute / 5) + 1
 
 func get_current_minute(time_passed: float) -> int:
 	return int(time_passed / 60)

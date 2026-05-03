@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ddfgra12fia2h" path="res://Entities/Player/player.gd" id="1_mv1ah"]
 [ext_resource type="PackedScene" uid="uid://d3btni8noxclj" path="res://Components/PositionHistoryTrail/position_history_trail.tscn" id="2_c0fwy"]
-[ext_resource type="Texture2D" uid="uid://dvamsylqvvrlj" path="res://Art/Stuff/Mow.png" id="2_iplt1"]
 [ext_resource type="PackedScene" uid="uid://b22elq4qgcjq7" path="res://Components/HurtboxComponent/hurtbox_component.tscn" id="2_og23y"]
 [ext_resource type="PackedScene" uid="uid://c7tyt784mm0qr" path="res://Components/PositionHistoryRecord/position_history_record.tscn" id="2_siu7b"]
 [ext_resource type="PackedScene" uid="uid://bk06nmn2v34da" path="res://Scenes/TrailSprite/trail_sprite.tscn" id="3_fe32i"]
@@ -10,6 +9,7 @@
 [ext_resource type="Script" uid="uid://xlg5v4daw5s0" path="res://Entities/Player/PlayerStates/walkdle.gd" id="5_5c2io"]
 [ext_resource type="Script" uid="uid://b47lb8p18ml02" path="res://Entities/Player/PlayerStates/boomerang_charge.gd" id="6_4wf4l"]
 [ext_resource type="Script" uid="uid://d2x3yayfxcxqk" path="res://Entities/Player/PlayerStates/boomerang_throw.gd" id="7_01a4e"]
+[ext_resource type="Texture2D" uid="uid://dr3e3b73xlh20" path="res://Art/BananTime/monke.png" id="7_520x1"]
 [ext_resource type="Script" uid="uid://bb4d2ctgmmvdu" path="res://Entities/Player/PlayerStates/fall.gd" id="7_ap3xn"]
 [ext_resource type="Script" uid="uid://d4clgcc4hjp0c" path="res://Entities/Player/PlayerStates/slash_attack.gd" id="8_lub02"]
 [ext_resource type="Script" uid="uid://tim43anrvaa7" path="res://Entities/Player/PlayerStates/jump.gd" id="9_x1y6q"]
@@ -43,12 +43,197 @@
 [ext_resource type="PackedScene" uid="uid://bqrd0srtdaksn" path="res://SettingsMenu/settings_menu.tscn" id="34_l3oqu"]
 [ext_resource type="PackedScene" uid="uid://3mq7ntoru17f" path="res://Juices/ClockJuice/clock_juice.tscn" id="35_53w1c"]
 [ext_resource type="Texture2D" uid="uid://d31hdne52dndk" path="res://Art/uiButtons.png" id="40_520x1"]
+[ext_resource type="Texture2D" uid="uid://b2e50hn2busxu" path="res://Art/Stuff2/2d_lights_and_shadows_neutral_point_light.webp" id="44_mycwr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_og23y"]
-size = Vector2(20, 53)
+size = Vector2(20, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lu8i8"]
-size = Vector2(30, 64)
+size = Vector2(30, 49)
+
+[sub_resource type="Animation" id="Animation_0bw0x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mow:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.17453292]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fyltw"]
+resource_name = "dash"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mow:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pagiw"]
+resource_name = "fall"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mow:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.8, 1.2), Vector2(1.1, 0.9)]
+}
+
+[sub_resource type="Animation" id="Animation_d17g3"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mow:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.9, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_23o0h"]
+resource_name = "jump"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mow:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.2)]
+}
+
+[sub_resource type="Animation" id="Animation_mycwr"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mow:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.17453292, 0.17453292]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0bw0x"]
+_data = {
+&"RESET": SubResource("Animation_0bw0x"),
+&"dash": SubResource("Animation_fyltw"),
+&"fall": SubResource("Animation_pagiw"),
+&"idle": SubResource("Animation_d17g3"),
+&"jump": SubResource("Animation_23o0h"),
+&"walk": SubResource("Animation_mycwr")
+}
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_xr8lj"]
 _data = PackedByteArray("AAADAAUAAAABAAAAwAAAAIAAAAAWAQAAUklGRg4BAABXRUJQVlA4TAIBAAAvv8AfEA8w//M///Mf8IAb23bc5mO0IEQJKOWXRpTGUlACQ+0vwcN/krw7ieg/I7dtHHFOWzXlF/aDGw0uB5C1gN2wiIEOcGA3DxhVDChB4OSjEzwI9DrqWIJAy7xTSPOAJeMHu0lgPm7IHAicOIkS2FA5EOhchQdWsgoWDgQab6QAk0AwgDHwCS0ciDzUfbObE4+c1HOxrZIa6YXOt0TWPP4WOdJ2YwO7iKWxiESEbdU0eIy/FJ2we+2TjkyEQ/t/Gi2LTiiiDVXU4aL1CYv65RNg4vi8Xr9vrz+XJ863iDZk0Qk70Q3p1dvpY0D+sif1zdNOfYISXmcORH/1SeAHOAw=")
@@ -343,6 +528,7 @@ size_override = Vector2(128, 128)
 [node name="Player" type="CharacterBody2D" unique_id=1435043277]
 collision_layer = 0
 script = ExtResource("1_mv1ah")
+dash_speed = 1500.0
 slash_speed = 1500.0
 banana_throw_chrono_req = 2
 rewind_time_seconds_past = 4.0
@@ -365,7 +551,7 @@ health_component = NodePath("../HealthComponent")
 [node name="hurtbox" type="CollisionShape2D" parent="HurtboxComponent" unique_id=423481948]
 unique_name_in_owner = true
 z_index = 10
-position = Vector2(0, 4.5)
+position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_og23y")
 debug_color = Color(0.99607843, 0, 0.1764706, 0)
 
@@ -373,22 +559,81 @@ debug_color = Color(0.99607843, 0, 0.1764706, 0)
 unique_name_in_owner = true
 
 [node name="environmentCollision" type="CollisionShape2D" parent="." unique_id=403276698]
+position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_lu8i8")
 debug_color = Color(0, 0.6, 0.7019608, 0)
 
-[node name="Mow" type="Sprite2D" parent="." unique_id=24386391]
-unique_name_in_owner = true
-z_index = 1
-scale = Vector2(2, 2)
-texture = ExtResource("2_iplt1")
-hframes = 8
-vframes = 5
-
-[node name="trail_fx" parent="Mow" unique_id=1458130706 instance=ExtResource("13_owvpp")]
+[node name="trail_fx" parent="." unique_id=1458130706 instance=ExtResource("13_owvpp")]
 show_behind_parent = true
+position = Vector2(0, 19)
 MAX_LENGTH = 10.0
 
+[node name="Mow" type="Sprite2D" parent="." unique_id=24386391]
+unique_name_in_owner = true
+self_modulate = Color(0.5019608, 0.2784314, 0.10980392, 1)
+z_index = 1
+position = Vector2(-11, 2)
+rotation = 0.17453292
+texture = ExtResource("7_520x1")
+
+[node name="outlines" type="Node2D" parent="Mow" unique_id=83394117]
+unique_name_in_owner = true
+show_behind_parent = true
+
+[node name="outline" type="Sprite2D" parent="Mow/outlines" unique_id=737745662]
+unique_name_in_owner = true
+show_behind_parent = true
+position = Vector2(2, 0)
+texture = ExtResource("7_520x1")
+
+[node name="outline2" type="Sprite2D" parent="Mow/outlines" unique_id=26152932]
+unique_name_in_owner = true
+visible = false
+show_behind_parent = true
+position = Vector2(2, 2)
+texture = ExtResource("7_520x1")
+
+[node name="outline3" type="Sprite2D" parent="Mow/outlines" unique_id=1649687469]
+unique_name_in_owner = true
+show_behind_parent = true
+position = Vector2(0, 2)
+texture = ExtResource("7_520x1")
+
+[node name="outline4" type="Sprite2D" parent="Mow/outlines" unique_id=1234899730]
+unique_name_in_owner = true
+visible = false
+show_behind_parent = true
+position = Vector2(-2, 2)
+texture = ExtResource("7_520x1")
+
+[node name="outline5" type="Sprite2D" parent="Mow/outlines" unique_id=57932109]
+unique_name_in_owner = true
+show_behind_parent = true
+position = Vector2(-2, 0)
+texture = ExtResource("7_520x1")
+
+[node name="outline6" type="Sprite2D" parent="Mow/outlines" unique_id=1057684782]
+unique_name_in_owner = true
+visible = false
+show_behind_parent = true
+position = Vector2(-2, -2)
+texture = ExtResource("7_520x1")
+
+[node name="outline7" type="Sprite2D" parent="Mow/outlines" unique_id=673404313]
+unique_name_in_owner = true
+show_behind_parent = true
+position = Vector2(0, -2)
+texture = ExtResource("7_520x1")
+
+[node name="outline8" type="Sprite2D" parent="Mow/outlines" unique_id=2012319246]
+unique_name_in_owner = true
+visible = false
+show_behind_parent = true
+position = Vector2(2, -2)
+texture = ExtResource("7_520x1")
+
 [node name="Label" type="Label" parent="." unique_id=263212395]
+visible = false
 offset_left = -16.0
 offset_top = -95.0
 offset_right = 24.0
@@ -434,8 +679,9 @@ script = ExtResource("20_1ii4q")
 [node name="Dead" type="Node" parent="StateMachine" unique_id=1534403743]
 script = ExtResource("12_iplt1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2139049666]
+[node name="anims" type="AnimationPlayer" parent="." unique_id=2139049666]
 unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_0bw0x")
 
 [node name="banana_pivot" type="Node2D" parent="." unique_id=809830918]
 unique_name_in_owner = true
@@ -590,6 +836,7 @@ show_percentage = false
 current = true
 
 [node name="GUI" type="CanvasLayer" parent="." unique_id=1933383562]
+unique_name_in_owner = true
 process_mode = 3
 script = ExtResource("25_ui1ln")
 
@@ -638,10 +885,14 @@ label_settings = SubResource("LabelSettings_siu7b")
 
 [node name="Pause" type="Button" parent="GUI" unique_id=1289981006]
 unique_name_in_owner = true
-offset_left = 1188.0
-offset_top = 32.0
-offset_right = 1260.0
-offset_bottom = 104.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 34.0
+offset_bottom = 106.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
 focus_mode = 0
 icon = ExtResource("40_520x1")
 
@@ -720,3 +971,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "4a145c0fd2a44e6cf330b3986623982f"
 [node name="ClockJuice" parent="." unique_id=1233225325 instance=ExtResource("35_53w1c")]
 unique_name_in_owner = true
 scale = Vector2(1e-05, 1e-05)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1292382806]
+visible = false
+texture = ExtResource("44_mycwr")

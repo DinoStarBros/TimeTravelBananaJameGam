@@ -1,18 +1,15 @@
 [gd_scene format=3 uid="uid://c683uf3b2lkkt"]
 
 [ext_resource type="Script" uid="uid://674d8rd4rwlp" path="res://Entities/Shooty/shooty.gd" id="1_xtpny"]
-[ext_resource type="Texture2D" uid="uid://bn200tim80d5i" path="res://Art/Placeholder/Eneme.png" id="2_ggs5u"]
 [ext_resource type="Script" uid="uid://cq31qgpvffhy8" path="res://StateMachineStuff/state_machine.gd" id="3_bukr7"]
 [ext_resource type="PackedScene" uid="uid://b22elq4qgcjq7" path="res://Components/HurtboxComponent/hurtbox_component.tscn" id="4_gm3qu"]
 [ext_resource type="Script" uid="uid://bmwyu5unexr27" path="res://Entities/Shooty/walk.gd" id="5_4xxix"]
+[ext_resource type="Texture2D" uid="uid://dr3e3b73xlh20" path="res://Art/BananTime/monke.png" id="5_m1bkq"]
 [ext_resource type="Script" uid="uid://i02nt3clkcdq" path="res://Entities/Shooty/shoot_wind.gd" id="6_11xey"]
 [ext_resource type="Script" uid="uid://b12qn22qighea" path="res://Entities/Shooty/shoot.gd" id="7_m1bkq"]
 [ext_resource type="PackedScene" uid="uid://cbhff7nk3xl23" path="res://Components/HealthComponent/health_component.tscn" id="8_11xey"]
 [ext_resource type="PackedScene" uid="uid://bonkmbhpx3de4" path="res://Components/CorpseSpawner/corpse_spawner.tscn" id="9_m1bkq"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m1bkq"]
-atlas = ExtResource("2_ggs5u")
-region = Rect2(0, 0, 24, 24)
+[ext_resource type="AudioStream" uid="uid://cjrha4kbrqcpl" path="res://Audio/planesfx/gunshot-352466.mp3" id="10_li8vw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gm3qu"]
 size = Vector2(60, 70)
@@ -20,15 +17,16 @@ size = Vector2(60, 70)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggs5u"]
 size = Vector2(54, 64)
 
-[node name="Shooty" type="CharacterBody2D" unique_id=2101286089]
+[node name="Shooty" type="CharacterBody2D" unique_id=2101286089 node_paths=PackedStringArray("sprite")]
 collision_layer = 0
 script = ExtResource("1_xtpny")
 attack_range = 500.0
 attack_windup_time = 0.7
+sprite = NodePath("Eneme")
 
 [node name="CorpseSpawner" parent="." unique_id=1342225878 instance=ExtResource("9_m1bkq")]
-corpse_texture = SubResource("AtlasTexture_m1bkq")
-corpse_color = Color(0, 0, 1, 1)
+visible = false
+corpse_color = Color(0.16078432, 0.5254902, 1, 1)
 
 [node name="HealthComponent" parent="." unique_id=1186497212 node_paths=PackedStringArray("corpse_spawner") instance=ExtResource("8_11xey")]
 corpse_spawner = NodePath("../CorpseSpawner")
@@ -44,10 +42,9 @@ shape = SubResource("RectangleShape2D_gm3qu")
 shape = SubResource("RectangleShape2D_ggs5u")
 
 [node name="Eneme" type="Sprite2D" parent="." unique_id=1496688105]
-self_modulate = Color(0.043613724, 0.48985118, 1, 1)
-scale = Vector2(2.6, 2.6)
-texture = ExtResource("2_ggs5u")
-hframes = 5
+self_modulate = Color(0.16274032, 0.5262915, 0.9999997, 1)
+scale = Vector2(1.145, 1.145)
+texture = ExtResource("5_m1bkq")
 
 [node name="StateMachine" type="Node" parent="." unique_id=184293922 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_bukr7")
@@ -61,3 +58,8 @@ script = ExtResource("6_11xey")
 
 [node name="Shoot" type="Node" parent="StateMachine" unique_id=178642931]
 script = ExtResource("7_m1bkq")
+
+[node name="shotSfx" type="AudioStreamPlayer2D" parent="." unique_id=1562011051]
+unique_name_in_owner = true
+stream = ExtResource("10_li8vw")
+bus = &"SFX"

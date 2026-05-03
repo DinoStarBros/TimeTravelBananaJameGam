@@ -5,6 +5,10 @@ func enter() -> void:
 
 func physics_update(delta: float) -> void:
 	p.x_move_handling()
+	if p.x_input == 0:
+		%anims.play("idle")
+	else:
+		%anims.play("walk")
 	
 	if p.is_on_floor():
 		if Input.is_action_just_pressed("jump"):

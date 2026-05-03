@@ -1,7 +1,7 @@
 extends Node
 
 @onready var musics : Dictionary = {
-	
+	"Combat": %CombatMusic
 }
 
 func play_song(song: String, starting_point: float = 0.0) -> void: ## Stops the current song playing and plays the selected song

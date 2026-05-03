@@ -3,6 +3,8 @@ extends State
 func enter() -> void:
 	p.reset_sprite_flip_gravity()
 	p.jump_buffer_time = 0
+	
+	%anims.play("fall")
 
 func physics_update(delta: float) -> void:
 	p.x_move_handling()

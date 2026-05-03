@@ -6,6 +6,7 @@ func enter() -> void:
 
 	%jump.pitch_scale = 1.2 + randf_range(-.1, .1)
 	%jump.play()
+	%anims.play("jump")
 
 func physics_update(delta: float) -> void:
 	p.x_move_handling()
