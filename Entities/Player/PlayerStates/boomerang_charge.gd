@@ -7,6 +7,8 @@ func enter() -> void:
 
 func physics_update(delta: float) -> void:
 	p.x_move_handling()
+	if Input.is_action_just_pressed("jump") and p.is_on_floor():
+		p.velocity.y = -p.jump_speed
 	
 	Engine.time_scale = p.rang_charge_time_slow
 	
