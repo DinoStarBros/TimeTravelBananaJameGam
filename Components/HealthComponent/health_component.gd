@@ -24,7 +24,7 @@ func took_damage(attack : Attack) -> void:
 			if corpse_spawner:
 				corpse_spawner.dead(attack)
 			
-			Global.player.chronometer += 1
+			Global.player.chronometer += 2
 		elif get_parent() is Player:
 			get_parent().state_machine.change_state("dead")
 

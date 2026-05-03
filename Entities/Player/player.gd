@@ -47,12 +47,12 @@ var chronometer : int = 10:
 		chronometer = clamp(value, 0, max_chronometer)
 		
 
-const max_chronometer : int = 20
+const max_chronometer : int = 30
 const boomerang_throw_duration : float = 0.2
 const dash_duration : float = 0.3
 const dash_cooldown : float = 0.33
 const slash_duration : float = 0.2
-const slash_cooldown : float = 0.4
+const slash_cooldown : float = 0.3
 const rang_charge_time_slow : float = 0.5
 const max_rang_charge : float = 0.3
 const rewind_duration : float = 1

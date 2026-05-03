@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dt7cm1xlfpp7q" path="res://Entities/Player/camera.gd" id="4_n7pir"]
 [ext_resource type="PackedScene" uid="uid://cmd1vlynxp72q" path="res://Components/HitboxComponent/hitbox_component.tscn" id="6_f8dps"]
 [ext_resource type="Texture2D" uid="uid://dr3e3b73xlh20" path="res://Art/BananTime/monke.png" id="7_h07ax"]
-[ext_resource type="Texture2D" uid="uid://diihmdabfwa8g" path="res://Art/Placeholder/Trail2.png" id="8_h07ax"]
+[ext_resource type="Texture2D" uid="uid://bog413nskyqj0" path="res://Art/BananTime/bananer.png" id="8_h07ax"]
 [ext_resource type="PackedScene" uid="uid://cs1rxoq0ed6m7" path="res://Components/EnemySpawner/enemy_spawner.tscn" id="8_vhfm8"]
 [ext_resource type="Script" uid="uid://daru8mwvbp0vc" path="res://Screens/Arena/ui.gd" id="9_h07ax"]
 
@@ -96,18 +96,13 @@ autostart = true
 
 [node name="past_sprite" type="Sprite2D" parent="." unique_id=804627094]
 unique_name_in_owner = true
-modulate = Color(0.5019608, 0.2784314, 0.10980392, 0.4509804)
+self_modulate = Color(0.5019608, 0.2784314, 0.10980392, 0.4509804)
 texture = ExtResource("7_h07ax")
 
-[node name="banana" type="Sprite2D" parent="past_sprite" unique_id=1074816549]
-unique_name_in_owner = true
-self_modulate = Color(1, 1, 0, 1)
-position = Vector2(1, -28.5)
-scale = Vector2(0.15, 0.15)
+[node name="Bananer" type="Sprite2D" parent="past_sprite" unique_id=1104438298]
+self_modulate = Color(1, 1, 1, 0.5764706)
+position = Vector2(10, -39)
 texture = ExtResource("8_h07ax")
-flip_h = true
-hframes = 2
-vframes = 2
 
 [node name="ArenaUI" type="CanvasLayer" parent="." unique_id=632251310]
 script = ExtResource("9_h07ax")

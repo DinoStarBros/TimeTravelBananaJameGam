@@ -1,10 +1,9 @@
-# PositionTrail.gd
 extends Node2D
 class_name PositionHistoryTrail
 
 @export var trail_length: int = 30
-@export var trail_spacing: float = 0.2  # seconds between each trail point
-@export var trail_sprite: PackedScene  # Assign a Sprite2D scene (circle, banana, etc)
+@export var trail_spacing: float = 0.2  ## seconds between each trail point
+@export var trail_sprite: PackedScene  ## Assign a Sprite2D scene (circle, banana, etc)
 @export var _history_node: Node
 
 var _trail_sprites: Array[Sprite2D] = []

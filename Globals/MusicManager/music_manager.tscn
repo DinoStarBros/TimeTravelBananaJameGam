@@ -10,5 +10,5 @@ script = ExtResource("1_fjkhl")
 [node name="CombatMusic" type="AudioStreamPlayer" parent="." unique_id=571880366]
 unique_name_in_owner = true
 stream = ExtResource("2_rrprg")
-volume_db = -5.0
+volume_db = -7.0
 bus = &"Music"

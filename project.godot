@@ -13,6 +13,7 @@ config_version=5
 config/name="TimeTravelBananaJameGam"
 run/main_scene="uid://c4ecfyprkicdg"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/image="uid://cnw0h58bevqnt"
 config/icon="res://icon.svg"
 
 [autoload]

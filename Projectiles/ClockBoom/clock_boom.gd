@@ -26,3 +26,8 @@ func _spawn_click_boom() -> void:
 	click_boom.global_position = global_position
 	click_boom.scale = Vector2(5,5)
 	click_boom.modulate = Color.ORANGE_RED
+
+
+func _on_hitbox_component_hit(attack: Attack) -> void:
+	Global.add_score(20, global_position)
+	Global.spawn_splash_txt(global_position, 0.5, "ChronoBoom!")

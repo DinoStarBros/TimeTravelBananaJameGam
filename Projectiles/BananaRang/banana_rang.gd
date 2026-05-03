@@ -26,3 +26,8 @@ func _physics_process(delta: float) -> void:
 		if dist_to_plr <= 30:
 			Global.player.has_banana = true
 			queue_free()
+
+
+func _on_hitbox_component_hit(attack: Attack) -> void:
+	Global.add_score(10, global_position)
+	Global.spawn_splash_txt(global_position, 0.5, "Bananarang")
