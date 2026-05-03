@@ -12,7 +12,12 @@ func _ready() -> void:
 		SceneManager.change_scene("res://Screens/TitleScreen/title_screen.tscn")
 		settings_menu._save()
 		)
-
+	
+	%Pause.pressed.connect(
+		func():
+			if Global.current_game_state == Global.game_states.COMBAT:
+				pause_or_resume()
+	)
 
 func pause_or_resume() -> void:
 	get_tree().paused = not get_tree().paused

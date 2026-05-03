@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://cshxn7vlokrfo"]
+
+[ext_resource type="Script" uid="uid://5fmxaeaxmbdw" path="res://Entities/Dashie/dashie.gd" id="1_8a3mc"]
+[ext_resource type="PackedScene" uid="uid://b22elq4qgcjq7" path="res://Components/HurtboxComponent/hurtbox_component.tscn" id="2_syyv4"]
+[ext_resource type="PackedScene" uid="uid://cmd1vlynxp72q" path="res://Components/HitboxComponent/hitbox_component.tscn" id="3_efqat"]
+[ext_resource type="Texture2D" uid="uid://bn200tim80d5i" path="res://Art/Placeholder/Eneme.png" id="4_efqat"]
+[ext_resource type="PackedScene" uid="uid://cbhff7nk3xl23" path="res://Components/HealthComponent/health_component.tscn" id="5_1i743"]
+[ext_resource type="PackedScene" uid="uid://bonkmbhpx3de4" path="res://Components/CorpseSpawner/corpse_spawner.tscn" id="6_blksu"]
+[ext_resource type="Script" uid="uid://cq31qgpvffhy8" path="res://StateMachineStuff/state_machine.gd" id="7_blksu"]
+[ext_resource type="Script" uid="uid://bmmwupusct27o" path="res://Entities/Dashie/States/chase.gd" id="8_ldi0n"]
+[ext_resource type="Script" uid="uid://dbh82qjkwmn1b" path="res://Entities/Dashie/dash_wind.gd" id="9_dmh04"]
+[ext_resource type="Script" uid="uid://c0sojgp75d5qx" path="res://Entities/Dashie/dash_attack.gd" id="10_3ftlw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1i743"]
+size = Vector2(52, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blksu"]
+size = Vector2(54, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldi0n"]
+size = Vector2(64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1i743"]
+atlas = ExtResource("4_efqat")
+region = Rect2(0, 0, 24, 24)
+
+[node name="Dashie" type="CharacterBody2D" unique_id=190214008]
+collision_layer = 0
+script = ExtResource("1_8a3mc")
+x_speed = 300.0
+attack_range = 200.0
+attack_velocity = 700.0
+jump_speed = 400.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=300635582]
+shape = SubResource("RectangleShape2D_1i743")
+
+[node name="Eneme" type="Sprite2D" parent="." unique_id=1999519840]
+self_modulate = Color(0.5237438, 0.30231622, 0.0106548965, 1)
+scale = Vector2(2.6, 2.6)
+texture = ExtResource("4_efqat")
+hframes = 5
+
+[node name="HitboxComponent" parent="." unique_id=803641060 instance=ExtResource("3_efqat")]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1247800734]
+shape = SubResource("RectangleShape2D_blksu")
+
+[node name="HurtboxComponent" parent="." unique_id=1415980216 node_paths=PackedStringArray("health_component") instance=ExtResource("2_syyv4")]
+collision_mask = 2
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=100302267]
+shape = SubResource("RectangleShape2D_ldi0n")
+
+[node name="HealthComponent" parent="." unique_id=1186497212 node_paths=PackedStringArray("corpse_spawner") instance=ExtResource("5_1i743")]
+corpse_spawner = NodePath("../CorpseSpawner")
+
+[node name="CorpseSpawner" parent="." unique_id=1342225878 instance=ExtResource("6_blksu")]
+corpse_texture = SubResource("AtlasTexture_1i743")
+
+[node name="StateMachine" type="Node" parent="." unique_id=104388579 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("7_blksu")
+initial_state = NodePath("Chase")
+
+[node name="Chase" type="Node" parent="StateMachine" unique_id=2029510283]
+script = ExtResource("8_ldi0n")
+
+[node name="DashWind" type="Node" parent="StateMachine" unique_id=1720653367]
+script = ExtResource("9_dmh04")
+
+[node name="DashAttack" type="Node" parent="StateMachine" unique_id=141100295]
+script = ExtResource("10_3ftlw")

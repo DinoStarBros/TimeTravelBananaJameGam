@@ -42,6 +42,7 @@
 [ext_resource type="AudioStream" uid="uid://d0dlcg57pwrs6" path="res://Audio/planesfx/explosion-fx-343683.mp3" id="33_gds62"]
 [ext_resource type="PackedScene" uid="uid://bqrd0srtdaksn" path="res://SettingsMenu/settings_menu.tscn" id="34_l3oqu"]
 [ext_resource type="PackedScene" uid="uid://3mq7ntoru17f" path="res://Juices/ClockJuice/clock_juice.tscn" id="35_53w1c"]
+[ext_resource type="Texture2D" uid="uid://d31hdne52dndk" path="res://Art/uiButtons.png" id="40_520x1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_og23y"]
 size = Vector2(20, 53)
@@ -488,6 +489,7 @@ speed_scale = 0.4
 
 [node name="HitboxComponent" parent="banana_pivot" unique_id=1901029091 instance=ExtResource("15_r8fok")]
 unique_name_in_owner = true
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="banana_pivot/HitboxComponent" unique_id=699070159]
 position = Vector2(33, 0)
@@ -633,6 +635,15 @@ offset_right = 181.0
 offset_bottom = 29.0
 text = "0/20"
 label_settings = SubResource("LabelSettings_siu7b")
+
+[node name="Pause" type="Button" parent="GUI" unique_id=1289981006]
+unique_name_in_owner = true
+offset_left = 1188.0
+offset_top = 32.0
+offset_right = 1260.0
+offset_bottom = 104.0
+focus_mode = 0
+icon = ExtResource("40_520x1")
 
 [node name="Pause" type="CanvasLayer" parent="." unique_id=905008884]
 process_mode = 3

@@ -36,7 +36,7 @@ func exit() -> void:
 	p.hurtbox.disabled = false
 	p.clock_juice.enabled = false
 	%clock.stop()
-
+	%rewind2.stop()
 
 func _spawn_clock_boom() -> void:
 	var clock_boom : ClockBoom = References.clock_boom_scn.instantiate()

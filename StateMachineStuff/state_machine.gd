@@ -18,8 +18,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if current_state:
-		debug.text = str(current_state.name)
-		current_state.update(delta)
+		if debug:
+			debug.text = str(current_state.name)
+			current_state.update(delta)
 
 func _physics_process(delta: float) -> void:
 	if current_state:

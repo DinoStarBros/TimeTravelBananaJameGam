@@ -2,6 +2,7 @@ extends Node2D
 class_name CorpseSpawner
 
 @export var corpse_texture : Texture2D
+@export var corpse_color : Color
 
 var dir_to_atk : Vector2
 
@@ -16,4 +17,5 @@ func _spawn_flying_corpse() -> void:
 	flying_corpse.sprite_texture = corpse_texture
 	flying_corpse.dir_to_attack = dir_to_atk
 	flying_corpse.global_position = global_position
+	flying_corpse.modulate = corpse_color
 	Global.arena.add_child(flying_corpse)

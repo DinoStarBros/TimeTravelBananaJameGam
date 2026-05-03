@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://bwnq331xnux26"]
+
+[ext_resource type="Script" uid="uid://cbfj6looyxi02" path="res://Projectiles/ReflectedProjectile/reflected_projectile.gd" id="1_f125k"]
+[ext_resource type="PackedScene" uid="uid://cmd1vlynxp72q" path="res://Components/HitboxComponent/hitbox_component.tscn" id="2_yr6va"]
+[ext_resource type="Texture2D" uid="uid://cciyhi6pxtjxo" path="res://Art/fxshit/BeamEneBullet.png" id="3_xamxa"]
+[ext_resource type="AudioStream" uid="uid://cq1v7cgw8ngyk" path="res://Audio/tresure/slashParry.wav" id="4_8qloj"]
+[ext_resource type="PackedScene" uid="uid://cg1j2ioabubjc" path="res://Juices/trail/trail_fx.tscn" id="5_lvupk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qloj"]
+radius = 14.0
+
+[sub_resource type="Animation" id="Animation_8qloj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitboxComponent/BeamEneBullet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_xamxa"]
+resource_name = "wadadyg"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitboxComponent/BeamEneBullet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qloj"]
+_data = {
+&"RESET": SubResource("Animation_8qloj"),
+&"wadadyg": SubResource("Animation_xamxa")
+}
+
+[sub_resource type="Gradient" id="Gradient_dklpi"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.5952945, 0.15890771, 1)
+
+[node name="ReflectedProjectile" type="Node2D" unique_id=511661121]
+script = ExtResource("1_f125k")
+
+[node name="HitboxComponent" parent="." unique_id=1415980216 instance=ExtResource("2_yr6va")]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1998321740]
+shape = SubResource("CircleShape2D_8qloj")
+
+[node name="BeamEneBullet" type="Sprite2D" parent="HitboxComponent" unique_id=1311329219]
+modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_xamxa")
+hframes = 3
+vframes = 2
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=846121713]
+libraries/ = SubResource("AnimationLibrary_8qloj")
+autoplay = &"wadadyg"
+
+[node name="Reflect" type="AudioStreamPlayer2D" parent="." unique_id=36524213]
+unique_name_in_owner = true
+stream = ExtResource("4_8qloj")
+autoplay = true
+bus = &"SFX"
+
+[node name="trail_fx" parent="." unique_id=432801300 instance=ExtResource("5_lvupk")]
+show_behind_parent = true
+gradient = SubResource("Gradient_dklpi")
