@@ -1,0 +1,219 @@
+[gd_scene format=3 uid="uid://bgkxogtg651y3"]
+
+[ext_resource type="Script" uid="uid://c3qwu1qb10bck" path="res://Scenes/HowToPlay/how_to_play.gd" id="1_ypcvb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ypcvb"]
+font_size = 30
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="how_to_play" type="Control" unique_id=1121814177]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ypcvb")
+
+[node name="bg" type="PanelContainer" parent="." unique_id=285816113]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="close" type="Button" parent="." unique_id=1559710128]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = -105.0
+offset_right = 149.0
+offset_bottom = -56.0
+grow_vertical = 0
+focus_mode = 0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "Close"
+
+[node name="left" type="Button" parent="." unique_id=2026528517]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 90.0
+offset_top = -24.0
+offset_right = 125.0
+offset_bottom = 25.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "<<"
+
+[node name="right" type="Button" parent="." unique_id=1956611963]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -24.0
+offset_right = -85.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = ">>"
+
+[node name="page_no" type="Label" parent="." unique_id=766402660]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -174.0
+offset_top = -105.0
+offset_right = -122.0
+offset_bottom = -75.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "1 / 7"
+
+[node name="p1" type="MarginContainer" parent="." unique_id=72376791]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 195.0
+offset_top = 144.0
+offset_right = -195.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vid1" type="VideoStreamPlayer" parent="p1" unique_id=1014710522]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="p1" unique_id=489044258]
+layout_mode = 2
+size_flags_vertical = 0
+text = "WASD to Move
+Space to Jump
+Shift to Dash"
+label_settings = SubResource("LabelSettings_ypcvb")
+
+[node name="p2" type="MarginContainer" parent="." unique_id=1755423156]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 195.0
+offset_top = 144.0
+offset_right = -195.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vid2" type="VideoStreamPlayer" parent="p2" unique_id=1702769278]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="p2" unique_id=1235861822]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Press Left Click to do a Slash Attack
+Defeating enemies grants you chronometer, a resource used for certain moves"
+label_settings = SubResource("LabelSettings_ypcvb")
+
+[node name="p3" type="MarginContainer" parent="." unique_id=1639070438]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 195.0
+offset_top = 144.0
+offset_right = -195.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vid3" type="VideoStreamPlayer" parent="p3" unique_id=1745145308]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="p3" unique_id=1394957994]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Hold Right Click to Charge up a Bananarang throw
+Release to throw the Bananarang
+It uses 2 chronometer"
+label_settings = SubResource("LabelSettings_ypcvb")
+
+[node name="p4" type="MarginContainer" parent="." unique_id=2096877413]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 195.0
+offset_top = 144.0
+offset_right = -195.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vid4" type="VideoStreamPlayer" parent="p4" unique_id=1948142618]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="p4" unique_id=1259718422]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Press R to do a Rewind Chronoblast
+You go back to your position in the past, become invulnerable, 
+and do a large explosion around you.
+It uses 10 chronometer"
+label_settings = SubResource("LabelSettings_ypcvb")
+
+[node name="p5" type="MarginContainer" parent="." unique_id=1041117213]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 195.0
+offset_top = 144.0
+offset_right = -195.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vid5" type="VideoStreamPlayer" parent="p5" unique_id=2106051700]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="p5" unique_id=1376780268]
+layout_mode = 2
+size_flags_vertical = 0
+text = "You can parry enemy projectiles with the slash attack
+or bananarang."
+label_settings = SubResource("LabelSettings_ypcvb")
+
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="right" to="." method="_on_right_pressed"]

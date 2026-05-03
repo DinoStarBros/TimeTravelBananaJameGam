@@ -13,10 +13,13 @@ var speed_mult : float = 2
 func _ready() -> void:
 	%play.pressed.connect(_play_pressed)
 	%quit.pressed.connect(_quit_pressed)
+	%tutorial.pressed.connect(func(): %how_to_play.show())
 	get_tree().paused = false
 	Global.current_game_state = Global.game_states.TITLE
 	
 	bg_vel = Vector2(-100, -100) * speed_mult
+	MusicManager.stop_all_songs()
+	%BGs.show()
 
 func _play_pressed() -> void:
 	SceneManager.change_scene("res://Screens/Arena/arena.tscn")
