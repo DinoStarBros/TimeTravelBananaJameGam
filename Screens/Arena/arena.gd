@@ -10,13 +10,16 @@ var cam_desire_pos : Vector2
 var screen_half : Vector2
 var enemy_spawn_amount : int = 1
 
-const base_enemy_spawn_cooldown : float = 4.0
+const base_enemy_spawn_cooldown : float = 3.0
 
 func _ready() -> void:
 	screen_half = get_viewport_rect().size / 2
 	Global.arena = self
 	Global.past_sprite = %past_sprite
 	spawn_timer.timeout.connect(spawn_enemy)
+	
+	for n in 100:
+		print(get_enemy_spawn_time(n*60))
 
 func _process(delta: float) -> void:
 	
@@ -31,13 +34,14 @@ func spawn_enemy() -> void:
 	)
 
 func get_enemy_spawn_time(time_passed: float) -> float:
-	return base_enemy_spawn_cooldown * (
-		Scalings.linear_scaling(
-		get_current_minute(time_passed),
-		0.4,
-		false
+	return (
+		max(
+			base_enemy_spawn_cooldown * Scalings.linear_scaling(get_current_minute(time_passed), 1.33, false)
+			,
+			0.1
 		)
 	)
+	
 
 func get_current_minute(time_passed: float) -> int:
 	return int(time_passed / 60)
