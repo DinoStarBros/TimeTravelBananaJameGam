@@ -20,3 +20,7 @@ func _spawn_reflected_projectile() -> void:
 	reflected_projectile.direction = -direction
 	Global.arena.add_child(reflected_projectile)
 	reflected_projectile.global_position = global_position
+
+
+func _on_life_time_timeout() -> void:
+	queue_free()

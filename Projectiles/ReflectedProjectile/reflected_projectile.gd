@@ -18,3 +18,7 @@ func _spawn_click_boom() -> void:
 	click_boom.global_position = global_position
 	#click_boom.scale = Vector2(5,5)
 	#click_boom.modulate = Color.ORANGE_RED
+
+
+func _on_life_timer_timeout() -> void:
+	queue_free()

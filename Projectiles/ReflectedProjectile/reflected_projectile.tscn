@@ -81,3 +81,10 @@ bus = &"SFX"
 [node name="trail_fx" parent="." unique_id=432801300 instance=ExtResource("5_lvupk")]
 show_behind_parent = true
 gradient = SubResource("Gradient_dklpi")
+
+[node name="LifeTimer" type="Timer" parent="." unique_id=1883211776]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

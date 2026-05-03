@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d2eo7njr0p53g" path="res://Art/Stuff/Mow cured.png" id="7_f8dps"]
 [ext_resource type="Texture2D" uid="uid://diihmdabfwa8g" path="res://Art/Placeholder/Trail2.png" id="8_h07ax"]
 [ext_resource type="PackedScene" uid="uid://cs1rxoq0ed6m7" path="res://Components/EnemySpawner/enemy_spawner.tscn" id="8_vhfm8"]
+[ext_resource type="Script" uid="uid://daru8mwvbp0vc" path="res://Screens/Arena/ui.gd" id="9_h07ax"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afj85"]
 size = Vector2(3358, 292.315)
@@ -17,6 +18,11 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -392, 506, 0, 0, 0, 0, -362, -192, 0, 0, 0, 0, 1540, -179, 0, 0, 0, 0, 1534, 597)
 }
 point_count = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_h07ax"]
+font_size = 40
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Arena" type="Node2D" unique_id=651972874]
 script = ExtResource("1_w8ma2")
@@ -80,3 +86,18 @@ texture = ExtResource("8_h07ax")
 flip_h = true
 hframes = 2
 vframes = 2
+
+[node name="ArenaUI" type="CanvasLayer" parent="." unique_id=632251310]
+script = ExtResource("9_h07ax")
+
+[node name="time_p_txt" type="Label" parent="ArenaUI" unique_id=2126490942]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "45.67"
+label_settings = SubResource("LabelSettings_h07ax")

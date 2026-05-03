@@ -8,6 +8,8 @@ class_name Arena
 
 var cam_desire_pos : Vector2
 var screen_half : Vector2
+var enemy_spawn_cooldown : float = 2
+var enemy_spawn_amount : int = 1
 
 func _ready() -> void:
 	screen_half = get_viewport_rect().size / 2
