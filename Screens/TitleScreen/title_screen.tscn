@@ -260,6 +260,7 @@ theme_override_constants/separation = 55
 [node name="play" type="Button" parent="buttons" unique_id=1259928141]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 50
 text = "Play"
@@ -267,6 +268,7 @@ text = "Play"
 [node name="tutorial" type="Button" parent="buttons" unique_id=1583631913]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 50
 text = "How To Play"
@@ -274,6 +276,7 @@ text = "How To Play"
 [node name="quit" type="Button" parent="buttons" unique_id=1225323952]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 50
 text = "Quit"

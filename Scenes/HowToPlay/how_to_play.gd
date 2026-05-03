@@ -3,7 +3,7 @@ class_name HowToPlay
 
 var current_page : int = 0
 @onready var pages : Array = [
-	%p1,%p2,%p3,%p4,%p5
+	%p1,%p2,%p3,%p4,%p5,%p6
 	
 ]
 @onready var vids : Array = [
@@ -28,7 +28,7 @@ func _on_right_pressed() -> void:
 	page_change(1)
 
 func page_change(step: int) -> void:
-	current_page += step
+	current_page = wrapi(current_page + step, 0, pages.size())
 	_update_page()
 
 func _update_page() -> void:
@@ -40,11 +40,12 @@ func _update_page() -> void:
 			page.show()
 	
 	for video in vids:
-		var vid_par = video.get_parent().get_parent()
+		var vid_par = video.get_parent()
 		
 		if vid_par.visible:
 			video.play()
 		else:
 			video.stop()
+
 func _process(delta: float) -> void:
 	page_no.text = str(current_page + 1, " / ", pages.size())

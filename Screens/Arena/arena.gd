@@ -10,7 +10,7 @@ var cam_desire_pos : Vector2
 var screen_half : Vector2
 var enemy_spawn_amount : int = 1
 
-const base_enemy_spawn_cooldown : float = 3.0
+const base_enemy_spawn_cooldown : float = 2.0
 
 func _ready() -> void:
 	screen_half = get_viewport_rect().size / 2
@@ -37,7 +37,6 @@ func spawn_enemy() -> void:
 		path_follow_2d.progress_ratio = randf()
 		enemy_spawner.spawn_enemy()
 
-
 func get_enemy_spawn_time(time_passed: float) -> float:
 	return (
 		max(
@@ -49,7 +48,7 @@ func get_enemy_spawn_time(time_passed: float) -> float:
 	
 
 func get_enemy_spawn_count(minute: int) -> int:
-	return (minute / 5) + 1
+	return (minute / 2) + 1
 
 func get_current_minute(time_passed: float) -> int:
 	return int(time_passed / 60)

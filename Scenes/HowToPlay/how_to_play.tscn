@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://bgkxogtg651y3"]
 
 [ext_resource type="Script" uid="uid://c3qwu1qb10bck" path="res://Scenes/HowToPlay/how_to_play.gd" id="1_ypcvb"]
+[ext_resource type="VideoStream" uid="uid://xtf2172v8aww" path="res://TutorialVids/CBMovement.ogv" id="2_n0c2p"]
+[ext_resource type="VideoStream" uid="uid://mtu5mtxbwbys" path="res://TutorialVids/CBSlashing.ogv" id="3_7onog"]
+[ext_resource type="VideoStream" uid="uid://bgo7p8h2gcjkg" path="res://TutorialVids/CBBananarang.ogv" id="4_1g3te"]
+[ext_resource type="VideoStream" uid="uid://dcc6kh1q0p8ix" path="res://TutorialVids/CBRewindChronoblas.ogv" id="5_nitio"]
+[ext_resource type="VideoStream" uid="uid://d0puokb6lkpwh" path="res://TutorialVids/CBParry.ogv" id="6_b1g1j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ypcvb"]
 font_size = 30
@@ -102,9 +107,14 @@ grow_vertical = 2
 [node name="vid1" type="VideoStreamPlayer" parent="p1" unique_id=1014710522]
 unique_name_in_owner = true
 layout_mode = 2
+stream = ExtResource("2_n0c2p")
+autoplay = true
+expand = true
+loop = true
 
 [node name="Label" type="Label" parent="p1" unique_id=489044258]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "WASD to Move
 Space to Jump
@@ -128,6 +138,11 @@ grow_vertical = 2
 [node name="vid2" type="VideoStreamPlayer" parent="p2" unique_id=1702769278]
 unique_name_in_owner = true
 layout_mode = 2
+stream = ExtResource("3_7onog")
+volume_db = -80.0
+autoplay = true
+expand = true
+loop = true
 
 [node name="Label" type="Label" parent="p2" unique_id=1235861822]
 layout_mode = 2
@@ -153,13 +168,18 @@ grow_vertical = 2
 [node name="vid3" type="VideoStreamPlayer" parent="p3" unique_id=1745145308]
 unique_name_in_owner = true
 layout_mode = 2
+stream = ExtResource("4_1g3te")
+volume_db = -80.0
+autoplay = true
+expand = true
+loop = true
 
 [node name="Label" type="Label" parent="p3" unique_id=1394957994]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Hold Right Click to Charge up a Bananarang throw
-Release to throw the Bananarang
-It uses 2 chronometer"
+text = "Hold Right Click to Charge up a Bananarang throw. Release to throw the Bananarang
+It uses 2 chronometer
+While charging up the Bananarang, it also slows down time."
 label_settings = SubResource("LabelSettings_ypcvb")
 
 [node name="p4" type="MarginContainer" parent="." unique_id=2096877413]
@@ -179,14 +199,19 @@ grow_vertical = 2
 [node name="vid4" type="VideoStreamPlayer" parent="p4" unique_id=1948142618]
 unique_name_in_owner = true
 layout_mode = 2
+stream = ExtResource("5_nitio")
+volume_db = -80.0
+autoplay = true
+expand = true
+loop = true
 
 [node name="Label" type="Label" parent="p4" unique_id=1259718422]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Press R to do a Rewind Chronoblast
-You go back to your position in the past, become invulnerable, 
+text = "Press R to do a Rewind Chronoblast.
+You go back through time, to your position in the past, become invulnerable, 
 and do a large explosion around you.
-It uses 10 chronometer"
+It uses 10 chronometer."
 label_settings = SubResource("LabelSettings_ypcvb")
 
 [node name="p5" type="MarginContainer" parent="." unique_id=1041117213]
@@ -206,12 +231,39 @@ grow_vertical = 2
 [node name="vid5" type="VideoStreamPlayer" parent="p5" unique_id=2106051700]
 unique_name_in_owner = true
 layout_mode = 2
+stream = ExtResource("6_b1g1j")
+volume_db = -80.0
+autoplay = true
+expand = true
+loop = true
 
 [node name="Label" type="Label" parent="p5" unique_id=1376780268]
 layout_mode = 2
 size_flags_vertical = 0
 text = "You can parry enemy projectiles with the slash attack
 or bananarang."
+label_settings = SubResource("LabelSettings_ypcvb")
+
+[node name="p6" type="MarginContainer" parent="." unique_id=753904000]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 195.0
+offset_top = 144.0
+offset_right = -195.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="p6" unique_id=1993077199]
+layout_mode = 2
+size_flags_vertical = 0
+text = "And that's basically it!
+Always stay on your toes, as both you and enemies are one shot.
+Try your best to get a high score and survive for as long as you can.
+More and more enemies will progressively spawn in."
 label_settings = SubResource("LabelSettings_ypcvb")
 
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]
