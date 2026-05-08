@@ -4,7 +4,7 @@ class_name ArenaUI
 @onready var time_p_txt: Label = %time_p_txt
 
 func _ready() -> void:
-	Global.time_passed = 0
+	Global.time_passed = 60*6
 
 func _physics_process(delta: float) -> void:
 	Global.time_passed += delta
